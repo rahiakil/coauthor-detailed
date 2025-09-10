@@ -1411,6 +1411,31 @@
                         <div class="glass-card full-width">
                             <h2 class="section-title"><i class="fas fa-memory"></i> Memory Architecture Comparison</h2>
                             <p>Revolutionary memory hierarchy design inspired by CPU cache architecture, optimized for long-context writing applications.</p>
+                            
+                            <!-- Mermaid Diagram for Memory Architecture -->
+                            <div class="mermaid-diagram">
+                                <div class="mermaid">
+                                    flowchart TD
+                                        A[Writing Request] --> B{Memory Agent}
+                                        B --> C[Active Memory<br/>200K tokens<br/>Immediate Context]
+                                        B --> D[Working Memory<br/>2M tokens<br/>Session Context]
+                                        B --> E[Persistent Memory<br/>10M+ tokens<br/>Long-term Context]
+                                        C --> F[Vector Database<br/>Semantic Search]
+                                        D --> G[Knowledge Graph<br/>Relationship Mapping]
+                                        E --> H[Hierarchical Storage<br/>Multi-level Summarization]
+                                        F --> I[Context Window<br/>Optimized Output]
+                                        G --> I
+                                        H --> I
+                                        I --> J[Writing Agent<br/>Enhanced Context]
+                                        
+                                        style A fill:#e1f5fe
+                                        style B fill:#fff3e0
+                                        style C fill:#f3e5f5
+                                        style D fill:#e8f5e8
+                                        style E fill:#fff8e1
+                                        style J fill:#e3f2fd
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="glass-card">
@@ -1531,6 +1556,40 @@
                         <div class="glass-card full-width">
                             <h2 class="section-title"><i class="fas fa-robot"></i> Memory Agent System</h2>
                             <p>Intelligent memory management agent that plans, extracts, and synthesizes contextual information for optimal writing assistance.</p>
+                            
+                            <!-- Mermaid Diagram for Memory Agent Process -->
+                            <div class="mermaid-diagram">
+                                <div class="mermaid">
+                                    sequenceDiagram
+                                        participant U as User Request
+                                        participant WA as Writing Agent
+                                        participant MA as Memory Agent
+                                        participant VDB as Vector DB
+                                        participant KG as Knowledge Graph
+                                        participant HS as Hierarchical Storage
+                                        
+                                        U->>WA: Writing Task
+                                        WA->>MA: Request Context
+                                        MA->>MA: Analyze Request
+                                        
+                                        par Parallel Retrieval
+                                            MA->>VDB: Semantic Search
+                                            MA->>KG: Relationship Mapping
+                                            MA->>HS: Historical Context
+                                        end
+                                        
+                                        VDB-->>MA: Relevant Chunks
+                                        KG-->>MA: Connected Concepts
+                                        HS-->>MA: Background Context
+                                        
+                                        MA->>MA: Synthesize Context
+                                        MA->>MA: Rank by Relevance
+                                        MA-->>WA: Optimized Context Package
+                                        WA-->>U: Enhanced Writing Output
+                                        
+                                        Note over MA: Memory Agent orchestrates<br/>multiple data sources intelligently
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="glass-card">
@@ -1636,6 +1695,43 @@
                         <div class="glass-card full-width">
                             <h2 class="section-title"><i class="fas fa-exchange-alt"></i> Agent-to-Agent Communication</h2>
                             <p>Revolutionary multi-agent collaboration system enabling Memory Agent and Writing Agent to work in perfect synchronization.</p>
+                            
+                            <!-- Mermaid Diagram for Agent-to-Agent Communication -->
+                            <div class="mermaid-diagram">
+                                <div class="mermaid">
+                                    graph TB
+                                        subgraph "Agent Communication Protocol"
+                                            WA[Writing Agent<br/>🖋️]
+                                            MA[Memory Agent<br/>🧠]
+                                            
+                                            WA -->|"1. Context Request"| MA
+                                            MA -->|"2. Context Analysis"| INT[Intelligence Layer]
+                                            INT -->|"3. Multi-Source Query"| STORE[(Storage Systems)]
+                                            
+                                            subgraph STORE[Storage Systems]
+                                                VDB[(Vector DB)]
+                                                KG[(Knowledge Graph)]
+                                                HS[(Hierarchical Storage)]
+                                            end
+                                            
+                                            STORE -->|"4. Raw Data"| INT
+                                            INT -->|"5. Synthesized Context"| MA
+                                            MA -->|"6. Optimized Context Package"| WA
+                                            WA -->|"7. Enhanced Output"| USER[User]
+                                            
+                                            WA -.->|"8. Feedback Loop"| MA
+                                            MA -.->|"9. Learning Update"| INT
+                                        end
+                                        
+                                        style WA fill:#e3f2fd
+                                        style MA fill:#fff3e0
+                                        style INT fill:#f3e5f5
+                                        style VDB fill:#e8f5e8
+                                        style KG fill:#fff8e1
+                                        style HS fill:#fce4ec
+                                        style USER fill:#e0f2f1
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="glass-card">
@@ -2169,6 +2265,65 @@
                 <div class="content-grid">
                     <div class="glass-card full-width">
                         <h2 class="section-title"><i class="fas fa-chart-line"></i> Market Analysis & Segmentation</h2>
+                        
+                        <!-- ISCO Writing Economy Analysis -->
+                        <div class="glass-card isco-analysis">
+                            <h3 class="card-title"><i class="fas fa-briefcase"></i> ISCO Writing Economy Analysis</h3>
+                            <p class="analysis-intro">The International Standard Classification of Occupations (ISCO) reveals that <strong>47.2% of the global economy</strong> relies heavily on writing-intensive work, representing a massive $49.3B Total Addressable Market.</p>
+                            
+                            <div class="isco-grid">
+                                <div class="isco-level">
+                                    <h4>ISCO Level 1 - Managers (12.8%)</h4>
+                                    <div class="isco-metrics">
+                                        <span class="writing-intensity">High Writing Intensity: 85%</span>
+                                        <span class="daily-output">Daily Output: 2,500-4,000 words</span>
+                                        <span class="use-cases">Reports, Strategic Plans, Executive Communications</span>
+                                        <span class="market-size">Market Size: $18.7B</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="isco-level">
+                                    <h4>ISCO Level 2 - Professionals (18.4%)</h4>
+                                    <div class="isco-metrics">
+                                        <span class="writing-intensity">Critical Writing Intensity: 92%</span>
+                                        <span class="daily-output">Daily Output: 3,000-6,000 words</span>
+                                        <span class="use-cases">Research Papers, Legal Briefs, Medical Documentation</span>
+                                        <span class="market-size">Market Size: $24.1B</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="isco-level">
+                                    <h4>ISCO Level 3 - Technicians & Associates (16.0%)</h4>
+                                    <div class="isco-metrics">
+                                        <span class="writing-intensity">Medium Writing Intensity: 68%</span>
+                                        <span class="daily-output">Daily Output: 1,800-3,200 words</span>
+                                        <span class="use-cases">Technical Documentation, Training Materials, Procedures</span>
+                                        <span class="market-size">Market Size: $6.5B</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="writing-economy-stats">
+                                <div class="stat-highlight">
+                                    <h4>🔥 Key Insight: Writing-Heavy Economy</h4>
+                                    <div class="insight-grid">
+                                        <div class="insight-item">
+                                            <span class="insight-number">47.2%</span>
+                                            <span class="insight-label">of global workforce in writing-intensive roles</span>
+                                        </div>
+                                        <div class="insight-item">
+                                            <span class="insight-number">3.2B</span>
+                                            <span class="insight-label">workers globally requiring advanced writing tools</span>
+                                        </div>
+                                        <div class="insight-item">
+                                            <span class="insight-number">$49.3B</span>
+                                            <span class="insight-label">Total Addressable Market for AI writing tools</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="market-stats-grid">
                             <div class="market-segment detailed">
                                 <div class="segment-header">
@@ -2652,6 +2807,208 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Detailed Pricing Model Analysis -->
+                    <div class="glass-card full-width compact-card">
+                        <h3 class="card-title"><i class="fas fa-layer-group"></i> Detailed Pricing Tiers & Strategy Analysis</h3>
+                        
+                        <div class="pricing-strategy-overview">
+                            <p class="strategy-intro">Our multi-tiered pricing strategy captures value across the entire spectrum of writing-intensive professionals, from individual freelancers to enterprise organizations, with sophisticated context management capabilities scaled to each segment's needs.</p>
+                        </div>
+                        
+                        <div class="pricing-tiers-detailed">
+                            <!-- Tier 1: Individual/Freelancer -->
+                            <div class="pricing-tier tier-individual">
+                                <div class="tier-header">
+                                    <h4><i class="fas fa-user"></i> Tier 1: Individual Writer</h4>
+                                    <div class="tier-price">$29/month</div>
+                                </div>
+                                <div class="tier-features">
+                                    <div class="feature-category">
+                                        <h5>Context Management</h5>
+                                        <ul>
+                                            <li>200K token context window</li>
+                                            <li>Basic hierarchical memory (3 levels)</li>
+                                            <li>Personal document library (up to 500 documents)</li>
+                                            <li>Standard genetic algorithm optimization</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Writing Features</h5>
+                                        <ul>
+                                            <li>Single writing agent</li>
+                                            <li>Basic memory agent support</li>
+                                            <li>Standard library access (creative, business)</li>
+                                            <li>Real-time semantic checking</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Usage Limits</h5>
+                                        <ul>
+                                            <li>50 hours monthly usage</li>
+                                            <li>10 simultaneous projects</li>
+                                            <li>Standard priority support</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tier-metrics">
+                                    <span class="metric">Target Users: 1.2M</span>
+                                    <span class="metric">Gross Margin: 74.4%</span>
+                                    <span class="metric">CAC: $45</span>
+                                    <span class="metric">LTV: $348</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tier 2: Professional/Healthcare -->
+                            <div class="pricing-tier tier-professional">
+                                <div class="tier-header">
+                                    <h4><i class="fas fa-user-md"></i> Tier 2: Professional</h4>
+                                    <div class="tier-price">$79/month</div>
+                                </div>
+                                <div class="tier-features">
+                                    <div class="feature-category">
+                                        <h5>Enhanced Context Management</h5>
+                                        <ul>
+                                            <li>2M token context window</li>
+                                            <li>Advanced hierarchical memory (5 levels)</li>
+                                            <li>Professional document library (up to 2,500 documents)</li>
+                                            <li>Domain-specific libraries (legal, medical, technical)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Specialized Features</h5>
+                                        <ul>
+                                            <li>Dual writing agents (general + specialist)</li>
+                                            <li>Advanced memory agent with domain expertise</li>
+                                            <li>Compliance checking (HIPAA, legal standards)</li>
+                                            <li>Citation and reference management</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Professional Usage</h5>
+                                        <ul>
+                                            <li>200 hours monthly usage</li>
+                                            <li>50 simultaneous projects</li>
+                                            <li>Priority support with domain experts</li>
+                                            <li>Integration APIs available</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tier-metrics">
+                                    <span class="metric">Target Users: 650K</span>
+                                    <span class="metric">Gross Margin: 80.5%</span>
+                                    <span class="metric">CAC: $285</span>
+                                    <span class="metric">LTV: $948</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tier 3: Enterprise -->
+                            <div class="pricing-tier tier-enterprise">
+                                <div class="tier-header">
+                                    <h4><i class="fas fa-building"></i> Tier 3: Enterprise</h4>
+                                    <div class="tier-price">$249/month</div>
+                                </div>
+                                <div class="tier-features">
+                                    <div class="feature-category">
+                                        <h5>Enterprise Context Management</h5>
+                                        <ul>
+                                            <li>10M+ token context window (full capability)</li>
+                                            <li>Enterprise hierarchical memory (unlimited levels)</li>
+                                            <li>Organizational knowledge base (unlimited documents)</li>
+                                            <li>Custom domain-specific training</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Advanced AI Infrastructure</h5>
+                                        <ul>
+                                            <li>Multi-agent writing teams (up to 5 specialized agents)</li>
+                                            <li>Advanced memory orchestration</li>
+                                            <li>Custom knowledge libraries</li>
+                                            <li>Advanced genetic algorithm with custom fitness functions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Enterprise Features</h5>
+                                        <ul>
+                                            <li>Unlimited usage hours</li>
+                                            <li>Unlimited projects</li>
+                                            <li>Dedicated account management</li>
+                                            <li>Full API access and custom integrations</li>
+                                            <li>On-premise deployment options</li>
+                                            <li>Advanced security and compliance</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tier-metrics">
+                                    <span class="metric">Target Users: 125K</span>
+                                    <span class="metric">Gross Margin: 83.8%</span>
+                                    <span class="metric">CAC: $1,250</span>
+                                    <span class="metric">LTV: $2,988</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tier 4: Government/Agency -->
+                            <div class="pricing-tier tier-government">
+                                <div class="tier-header">
+                                    <h4><i class="fas fa-landmark"></i> Tier 4: Government/Agency</h4>
+                                    <div class="tier-price">$1,249/month</div>
+                                </div>
+                                <div class="tier-features">
+                                    <div class="feature-category">
+                                        <h5>Government-Grade Infrastructure</h5>
+                                        <ul>
+                                            <li>Unlimited token context (10M+ capability)</li>
+                                            <li>Government-compliant memory architecture</li>
+                                            <li>Classified/sensitive document handling</li>
+                                            <li>Air-gapped deployment options</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Specialized Government Features</h5>
+                                        <ul>
+                                            <li>Multi-clearance level document management</li>
+                                            <li>Government writing standards compliance</li>
+                                            <li>Audit trail and full provenance tracking</li>
+                                            <li>Inter-agency collaboration tools</li>
+                                        </ul>
+                                    </div>
+                                    <div class="feature-category">
+                                        <h5>Enterprise+ Features</h5>
+                                        <ul>
+                                            <li>White-glove implementation</li>
+                                            <li>Custom government library development</li>
+                                            <li>24/7 dedicated support</li>
+                                            <li>Custom compliance certifications</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tier-metrics">
+                                    <span class="metric">Target Users: 15K</span>
+                                    <span class="metric">Gross Margin: 87.7%</span>
+                                    <span class="metric">CAC: $8,500</span>
+                                    <span class="metric">LTV: $14,988</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-strategy-insights">
+                            <h4><i class="fas fa-lightbulb"></i> Strategic Pricing Insights</h4>
+                            <div class="insights-grid">
+                                <div class="insight-card">
+                                    <h5>Value-Based Pricing</h5>
+                                    <p>Each tier is priced based on the value delivered through context management capabilities, with higher tiers providing exponentially more value through advanced memory architectures.</p>
+                                </div>
+                                <div class="insight-card">
+                                    <h5>Scalable Infrastructure</h5>
+                                    <p>Our multi-cloud, GPU-optimized infrastructure allows us to maintain high margins across all tiers while providing differentiated service levels.</p>
+                                </div>
+                                <div class="insight-card">
+                                    <h5>Land and Expand</h5>
+                                    <p>Individual users naturally upgrade to professional tiers as their writing needs grow, with enterprises often starting with pilot programs before full deployment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="sub-content" id="infrastructure">
@@ -2781,6 +3138,559 @@
                     <div class="glass-card full-width compact-card">
                         <h3 class="card-title">🏗️ Infrastructure Scaling Analysis</h3>
                         <canvas id="infrastructureChart" width="800" height="300"></canvas>
+                    </div>
+                </div>
+                
+                <div class="sub-content" id="revenue">
+                    <div class="content-grid">
+                        <div class="glass-card">
+                            <h3 class="card-title"><i class="fas fa-dollar-sign"></i> Revenue Model Overview</h3>
+                            <div class="revenue-overview">
+                                <div class="revenue-segment">
+                                    <h4>Individual Users</h4>
+                                    <div class="pricing-tier">
+                                        <span class="tier-name">Free Tier</span>
+                                        <span class="tier-price">$0/month</span>
+                                        <span class="tier-limits">500 tokens/day</span>
+                                    </div>
+                                    <div class="pricing-tier">
+                                        <span class="tier-name">Pro Tier</span>
+                                        <span class="tier-price">$29/month</span>
+                                        <span class="tier-limits">50K tokens/day</span>
+                                    </div>
+                                </div>
+                                <div class="revenue-segment">
+                                    <h4>Small Businesses</h4>
+                                    <div class="pricing-tier">
+                                        <span class="tier-name">Business Tier</span>
+                                        <span class="tier-price">$199/month</span>
+                                        <span class="tier-limits">500K tokens/day</span>
+                                    </div>
+                                </div>
+                                <div class="revenue-segment">
+                                    <h4>Enterprises</h4>
+                                    <div class="pricing-tier">
+                                        <span class="tier-name">Enterprise</span>
+                                        <span class="tier-price">$2,499/month</span>
+                                        <span class="tier-limits">5M+ tokens/day</span>
+                                    </div>
+                                </div>
+                                <div class="revenue-segment">
+                                    <h4>Government/Legal</h4>
+                                    <div class="pricing-tier">
+                                        <span class="tier-name">Professional</span>
+                                        <span class="tier-price">$8,499/month</span>
+                                        <span class="tier-limits">Specialized compliance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card">
+                            <h3 class="card-title"><i class="fas fa-chart-line"></i> Revenue Projections</h3>
+                            <div class="projection-timeline">
+                                <div class="projection-year">
+                                    <div class="year-header">Year 1 (2026)</div>
+                                    <div class="year-revenue">$2.4M</div>
+                                    <div class="year-details">1,200 paying customers</div>
+                                </div>
+                                <div class="projection-year">
+                                    <div class="year-header">Year 2 (2027)</div>
+                                    <div class="year-revenue">$8.7M</div>
+                                    <div class="year-details">4,350 paying customers</div>
+                                </div>
+                                <div class="projection-year">
+                                    <div class="year-header">Year 3 (2028)</div>
+                                    <div class="year-revenue">$85.4M</div>
+                                    <div class="year-details">27,500 paying customers</div>
+                                </div>
+                                <div class="projection-year">
+                                    <div class="year-header">Year 4 (2029)</div>
+                                    <div class="year-revenue">$287.6M</div>
+                                    <div class="year-details">53,200 paying customers</div>
+                                </div>
+                                <div class="projection-year">
+                                    <div class="year-header">Year 5 (2030)</div>
+                                    <div class="year-revenue">$723.4M</div>
+                                    <div class="year-details">79,000 paying customers</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card full-width">
+                            <h3 class="card-title"><i class="fas fa-chart-area"></i> Revenue Growth by Segment</h3>
+                            <canvas id="revenueSubChart" width="800" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sub-content" id="valuation">
+                    <div class="content-grid">
+                        <div class="glass-card">
+                            <h3 class="card-title">💎 Berkus Method</h3>
+                            <div class="valuation-method">
+                                <div class="berkus-factor">
+                                    <label>Sound Idea ($0-500K):</label>
+                                    <input type="range" id="berkus-idea" min="0" max="500000" value="500000" step="50000">
+                                    <span class="factor-value" id="berkus-idea-value">$500K</span>
+                                </div>
+                                <div class="berkus-factor">
+                                    <label>Prototype ($0-500K):</label>
+                                    <input type="range" id="berkus-prototype" min="0" max="500000" value="500000" step="50000">
+                                    <span class="factor-value" id="berkus-prototype-value">$500K</span>
+                                </div>
+                                <div class="berkus-factor">
+                                    <label>Quality Management ($0-1M):</label>
+                                    <input type="range" id="berkus-management" min="0" max="1000000" value="1000000" step="50000">
+                                    <span class="factor-value" id="berkus-management-value">$1M</span>
+                                </div>
+                                <div class="berkus-factor">
+                                    <label>Strategic Relationships ($0-1M):</label>
+                                    <input type="range" id="berkus-relationships" min="0" max="1000000" value="500000" step="50000">
+                                    <span class="factor-value" id="berkus-relationships-value">$500K</span>
+                                </div>
+                                <div class="berkus-factor">
+                                    <label>Product Rollout/Sales ($0-1M):</label>
+                                    <input type="range" id="berkus-sales" min="0" max="1000000" value="1000000" step="50000">
+                                    <span class="factor-value" id="berkus-sales-value">$1M</span>
+                                </div>
+                                <div class="method-total">
+                                    <strong>Berkus Total: <span id="berkus-total">$3.5M</span></strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3 class="card-title">📋 Scorecard Method</h3>
+                            <div class="valuation-method">
+                                <div class="scorecard-factor">
+                                    <label>Management (30%):</label>
+                                    <input type="range" id="scorecard-management" min="0.5" max="1.5" value="1.2" step="0.1">
+                                    <span class="factor-value" id="scorecard-management-value">1.2x</span>
+                                </div>
+                                <div class="scorecard-factor">
+                                    <label>Market Opportunity (25%):</label>
+                                    <input type="range" id="scorecard-market" min="0.5" max="1.5" value="1.3" step="0.1">
+                                    <span class="factor-value" id="scorecard-market-value">1.3x</span>
+                                </div>
+                                <div class="scorecard-factor">
+                                    <label>Product/Technology (15%):</label>
+                                    <input type="range" id="scorecard-product" min="0.5" max="1.5" value="1.4" step="0.1">
+                                    <span class="factor-value" id="scorecard-product-value">1.4x</span>
+                                </div>
+                                <div class="scorecard-factor">
+                                    <label>Competitive Environment (10%):</label>
+                                    <input type="range" id="scorecard-competition" min="0.5" max="1.5" value="1.1" step="0.1">
+                                    <span class="factor-value" id="scorecard-competition-value">1.1x</span>
+                                </div>
+                                <div class="scorecard-factor">
+                                    <label>Marketing/Sales (10%):</label>
+                                    <input type="range" id="scorecard-marketing" min="0.5" max="1.5" value="1.0" step="0.1">
+                                    <span class="factor-value" id="scorecard-marketing-value">1.0x</span>
+                                </div>
+                                <div class="scorecard-factor">
+                                    <label>Need for Financing (10%):</label>
+                                    <input type="range" id="scorecard-financials" min="0.5" max="1.5" value="1.1" step="0.1">
+                                    <span class="factor-value" id="scorecard-financials-value">1.1x</span>
+                                </div>
+                                <div class="method-total">
+                                    <strong>Scorecard Total: <span id="scorecard-total">$42.8M</span></strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3 class="card-title">⚠️ Risk Factor Summation</h3>
+                            <div class="valuation-method">
+                                <div class="risk-factor">
+                                    <label>Management Risk:</label>
+                                    <select id="risk-management" class="glass-select">
+                                        <option value="0">No Risk (+$0)</option>
+                                        <option value="-250000">Low Risk (-$250K)</option>
+                                        <option value="-500000">Normal Risk (-$500K)</option>
+                                        <option value="-750000">High Risk (-$750K)</option>
+                                    </select>
+                                </div>
+                                <div class="risk-factor">
+                                    <label>Stage of Business:</label>
+                                    <select id="risk-stage" class="glass-select">
+                                        <option value="-500000">Idea Stage (-$500K)</option>
+                                        <option value="-250000">Prototype (-$250K)</option>
+                                        <option value="0">Early Revenue (+$0)</option>
+                                        <option value="250000">Growth (+$250K)</option>
+                                    </select>
+                                </div>
+                                <div class="method-total">
+                                    <strong>Risk-Adjusted: <span id="risk-total">$35.5M</span></strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3 class="card-title">🔧 Cost to Duplicate</h3>
+                            <div class="valuation-method">
+                                <div class="cost-factor">
+                                    <label>Development Cost:</label>
+                                    <input type="number" id="dev-cost" value="2000000" min="500000" max="10000000" step="100000">
+                                </div>
+                                <div class="cost-factor">
+                                    <label>Market Premium Multiplier:</label>
+                                    <input type="range" id="market-premium" min="1" max="5" value="2.5" step="0.1">
+                                    <span class="factor-value" id="market-premium-value">2.5x</span>
+                                </div>
+                                <div class="method-total">
+                                    <strong>Cost to Duplicate: <span id="duplicate-total">$5M</span></strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card valuation-summary">
+                            <h3 class="card-title"><i class="fas fa-calculator"></i> Valuation Summary 
+                                <a href="https://www.berkonomics.com/" class="reference-link" target="_blank">³</a>
+                            </h3>
+                            <div class="summary-methods">
+                                <div class="summary-row">
+                                    <span>Berkus Method:</span>
+                                    <span id="summary-berkus">$3.5M</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Scorecard Method:</span>
+                                    <span id="summary-scorecard">$42.8M</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Risk Factor Method:</span>
+                                    <span id="summary-risk">$35.5M</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Cost to Duplicate:</span>
+                                    <span id="summary-duplicate">$5M</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Weighted Average:</span>
+                                    <span id="average-valuation">$21.7M</span>
+                                </div>
+                            </div>
+                            <div class="npv-badge" id="valuation-npv">
+                                NPV: $2.1B (at 12% discount)
+                            </div>
+                        </div>
+
+                        <div class="glass-card full-width">
+                            <h3 class="card-title"><i class="fas fa-route"></i> Comprehensive Valuation Path 
+                                <a href="#valuation-methodology" class="reference-link">⁴</a>
+                            </h3>
+                            <div class="valuation-path">
+                                <div class="valuation-step">
+                                    <div class="valuation-step-number">1</div>
+                                    <div class="valuation-step-content">
+                                        <div class="valuation-step-title">Market Size Validation</div>
+                                        <div class="valuation-step-desc">$49.3B content writing economy with 4 identified segments</div>
+                                    </div>
+                                    <div class="valuation-step-value">$49.3B TAM</div>
+                                </div>
+                                
+                                <div class="valuation-step">
+                                    <div class="valuation-step-number">2</div>
+                                    <div class="valuation-step-content">
+                                        <div class="valuation-step-title">Early-Stage Valuation (Berkus)</div>
+                                        <div class="valuation-step-desc">Based on idea strength, prototype, and management quality</div>
+                                    </div>
+                                    <div class="valuation-step-value" id="path-berkus">$3.5M</div>
+                                </div>
+                                
+                                <div class="valuation-step">
+                                    <div class="valuation-step-number">3</div>
+                                    <div class="valuation-step-content">
+                                        <div class="valuation-step-title">Peer Comparison (Scorecard)</div>
+                                        <div class="valuation-step-desc">Compared to similar pre-revenue AI companies</div>
+                                    </div>
+                                    <div class="valuation-step-value" id="path-scorecard">$42.8M</div>
+                                </div>
+                                
+                                <div class="valuation-step">
+                                    <div class="valuation-step-number">4</div>
+                                    <div class="valuation-step-content">
+                                        <div class="valuation-step-title">Revenue Multiple Analysis</div>
+                                        <div class="valuation-step-desc">Based on Year 3 projected revenue of $85.4M at 6-12x multiple</div>
+                                    </div>
+                                    <div class="valuation-step-value">$512M - $1.02B</div>
+                                </div>
+                                
+                                <div class="valuation-step">
+                                    <div class="valuation-step-number">5</div>
+                                    <div class="valuation-step-content">
+                                        <div class="valuation-step-title">DCF Analysis (Terminal Value)</div>
+                                        <div class="valuation-step-desc">5-year discounted cash flows plus terminal value</div>
+                                    </div>
+                                    <div class="valuation-step-value" id="path-dcf">$2.84B</div>
+                                </div>
+                                
+                                <div class="valuation-step">
+                                    <div class="valuation-step-number">6</div>
+                                    <div class="valuation-step-content">
+                                        <div class="valuation-step-title">Market Comparables</div>
+                                        <div class="valuation-step-desc">OpenAI ($80B+), Anthropic ($15B+) at similar revenue stages</div>
+                                    </div>
+                                    <div class="valuation-step-value">$5B - $15B</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sub-content" id="dcf">
+                    <div class="content-grid">
+                        <div class="glass-card controls-panel">
+                            <h3 class="card-title"><i class="fas fa-sliders-h"></i> DCF Parameters</h3>
+                            <div class="dcf-controls">
+                                <div class="control-group">
+                                    <label for="dcf-discount-rate">Discount Rate (WACC):</label>
+                                    <input type="range" id="dcf-discount-rate" min="8" max="20" value="12" step="0.5">
+                                    <span class="control-value" id="dcf-discount-rate-value">12.0%</span>
+                                </div>
+                                <div class="control-group">
+                                    <label for="dcf-terminal-growth">Terminal Growth Rate:</label>
+                                    <input type="range" id="dcf-terminal-growth" min="1" max="6" value="3" step="0.1">
+                                    <span class="control-value" id="dcf-terminal-growth-value">3.0%</span>
+                                </div>
+                                <div class="control-group">
+                                    <label for="dcf-projection-years">Projection Years:</label>
+                                    <select id="dcf-projection-years" class="glass-select">
+                                        <option value="5" selected>5 Years</option>
+                                        <option value="7">7 Years</option>
+                                        <option value="10">10 Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card full-width">
+                            <h3 class="card-title"><i class="fas fa-table"></i> DCF Projection Table</h3>
+                            <div class="dcf-table-container">
+                                <table class="dcf-table" id="dcf-projections">
+                                    <thead>
+                                        <tr>
+                                            <th>Year</th>
+                                            <th>Revenue</th>
+                                            <th>EBITDA</th>
+                                            <th>Free Cash Flow</th>
+                                            <th>PV Factor</th>
+                                            <th>Present Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dcf-tbody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3 class="card-title"><i class="fas fa-calculator"></i> DCF Results</h3>
+                            <div class="dcf-results-display">
+                                <div class="dcf-result">
+                                    <div class="result-label">Sum of PV Cash Flows:</div>
+                                    <div class="result-value" id="pv-cash-flows">$1.8B</div>
+                                </div>
+                                <div class="dcf-result">
+                                    <div class="result-label">Terminal Value (PV):</div>
+                                    <div class="result-value" id="terminal-value">$1.04B</div>
+                                </div>
+                                <div class="dcf-result highlight">
+                                    <div class="result-label">Enterprise Value:</div>
+                                    <div class="result-value" id="enterprise-value">$2.84B</div>
+                                </div>
+                                <div class="dcf-result">
+                                    <div class="result-label">Equity Value:</div>
+                                    <div class="result-value" id="equity-value">$2.84B</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card full-width">
+                            <h3 class="card-title"><i class="fas fa-chart-area"></i> DCF Analysis Chart</h3>
+                            <canvas id="dcfChart" width="800" height="400"></canvas>
+                        </div>
+                        
+                        <!-- NPV Over Time Visualization -->
+                        <div class="glass-card full-width compact-card">
+                            <h3 class="card-title"><i class="fas fa-chart-line"></i> NPV Evolution Over Time</h3>
+                            <div class="npv-timeline-container">
+                                <canvas id="npvTimelineChart" width="800" height="300"></canvas>
+                            </div>
+                            <div class="npv-insights">
+                                <div class="insight-card">
+                                    <div class="insight-label">Peak NPV Year</div>
+                                    <div class="insight-value" id="peak-npv-year">2030</div>
+                                </div>
+                                <div class="insight-card">
+                                    <div class="insight-label">NPV Growth Rate</div>
+                                    <div class="insight-value" id="npv-growth-rate">285%</div>
+                                </div>
+                                <div class="insight-card">
+                                    <div class="insight-label">Break-even NPV</div>
+                                    <div class="insight-value" id="breakeven-npv-year">2027</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sub-content" id="funding">
+                    <div class="content-grid">
+                        <div class="glass-card">
+                            <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> Funding Overview</h3>
+                            <div class="funding-summary">
+                                <div class="funding-item">
+                                    <label>Funding Amount:</label>
+                                    <div class="funding-input">
+                                        <span>$</span>
+                                        <input type="number" id="funding-request" value="5000000" min="1000000" max="50000000" step="1000000">
+                                    </div>
+                                </div>
+                                <div class="funding-metric">
+                                    <label>Pre-money Valuation:</label>
+                                    <span id="final-pre-money">$40M</span>
+                                </div>
+                                <div class="funding-metric">
+                                    <label>Post-money Valuation:</label>
+                                    <span id="post-money">$50M</span>
+                                </div>
+                                <div class="funding-metric">
+                                    <label>Equity Percentage:</label>
+                                    <span id="equity-percentage">20%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3 class="card-title">💸 Use of Funds</h3>
+                            <div class="funds-allocation">
+                                <div class="allocation-control tooltip-term">
+                                    <label>Product Development:</label>
+                                    <input type="range" id="product-allocation" min="20" max="60" value="40">
+                                    <span id="product-amount">$4M (40%)</span>
+                                    <div class="tooltip">
+                                        <div class="tooltip-header">Product Development</div>
+                                        <div class="tooltip-content">Core AI platform development, context management system, user interface, and API development.</div>
+                                        <div class="tooltip-basis">Includes 15 engineers, infrastructure, and development tools over 18 months</div>
+                                    </div>
+                                </div>
+                                <div class="allocation-control tooltip-term">
+                                    <label>Marketing & Sales:</label>
+                                    <input type="range" id="marketing-allocation" min="15" max="40" value="25">
+                                    <span id="marketing-amount">$2.5M (25%)</span>
+                                    <div class="tooltip">
+                                        <div class="tooltip-header">Marketing & Sales</div>
+                                        <div class="tooltip-content">Customer acquisition, brand building, sales team, partnerships, and go-to-market strategy execution.</div>
+                                        <div class="tooltip-basis">Target CAC of $45-$8500 per customer across segments with 3.3x average LTV/CAC</div>
+                                    </div>
+                                </div>
+                                <div class="allocation-control tooltip-term">
+                                    <label>Operations & Infrastructure:</label>
+                                    <input type="range" id="operations-allocation" min="10" max="30" value="20">
+                                    <span id="operations-amount">$2M (20%)</span>
+                                    <div class="tooltip">
+                                        <div class="tooltip-header">Operations & Infrastructure</div>
+                                        <div class="tooltip-content">Cloud infrastructure (AWS/Azure), security, compliance, customer support, and operational scaling.</div>
+                                        <div class="tooltip-basis">Supports 100K+ users with 10M+ token processing capability and 99.9% uptime</div>
+                                    </div>
+                                </div>
+                                <div class="allocation-control tooltip-term">
+                                    <label>Working Capital:</label>
+                                    <input type="range" id="working-capital-allocation" min="5" max="25" value="15">
+                                    <span id="working-capital-amount">$1.5M (15%)</span>
+                                    <div class="tooltip">
+                                        <div class="tooltip-header">Working Capital</div>
+                                        <div class="tooltip-content">Cash buffer for operational expenses, legal fees, accounting, insurance, and unexpected opportunities.</div>
+                                        <div class="tooltip-basis">6 months operating expenses buffer plus strategic reserves for market opportunities</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card full-width">
+                            <h3 class="card-title"><i class="fas fa-flag-checkered"></i> Key Milestones</h3>
+                            <div class="milestone-timeline">
+                                <div class="milestone-item">
+                                    <div class="milestone-date">Month 6</div>
+                                    <div class="milestone-title">Beta Launch</div>
+                                    <div class="milestone-desc">1,000 beta users • Core functionality validated</div>
+                                </div>
+                                <div class="milestone-item">
+                                    <div class="milestone-date">Month 12</div>
+                                    <div class="milestone-title">Market Entry</div>
+                                    <div class="milestone-desc">10,000 paying customers • Product-market fit</div>
+                                </div>
+                                <div class="milestone-item highlight">
+                                    <div class="milestone-date">Month 19</div>
+                                    <div class="milestone-title">Break-even</div>
+                                    <div class="milestone-desc">Monthly recurring revenue exceeds costs</div>
+                                </div>
+                                <div class="milestone-item">
+                                    <div class="milestone-date">Month 24</div>
+                                    <div class="milestone-title">Scale Phase</div>
+                                    <div class="milestone-desc">$50M ARR • Enterprise market penetration</div>
+                                </div>
+                                <div class="milestone-item">
+                                    <div class="milestone-date">Month 36</div>
+                                    <div class="milestone-title">Series A</div>
+                                    <div class="milestone-desc">$200M ARR • Next funding round</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3 class="card-title">🚪 Exit Scenarios</h3>
+                            <div class="exit-scenarios">
+                                <div class="exit-scenario">
+                                    <h4>Strategic Acquisition (Year 3-4)</h4>
+                                    <div class="scenario-details">
+                                        <div class="detail-row">
+                                            <span>Valuation Range:</span>
+                                            <span>$500M - $1.2B</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Revenue Multiple:</span>
+                                            <span>6-12x ARR</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Investor Return:</span>
+                                            <span>12.5x - 30x</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Potential Acquirers:</span>
+                                            <span>Microsoft, Google, Adobe</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="exit-scenario">
+                                    <h4>IPO (Year 5-7)</h4>
+                                    <div class="scenario-details">
+                                        <div class="detail-row">
+                                            <span>Valuation Range:</span>
+                                            <span>$2B - $8B</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Revenue Multiple:</span>
+                                            <span>8-15x ARR</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Investor Return:</span>
+                                            <span>50x - 200x</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Market Comparables:</span>
+                                            <span>OpenAI, Anthropic</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card full-width">
+                            <h3 class="card-title"><i class="fas fa-pie-chart"></i> Funding Allocation</h3>
+                            <canvas id="fundingChart" width="800" height="400"></canvas>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -3002,479 +3912,6 @@
                     <div class="glass-card full-width">
                         <h3 class="card-title"><i class="fas fa-chart-line"></i> Revenue Growth by Segment</h3>
                         <canvas id="revenueChart" width="800" height="400"></canvas>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Valuation Methods Tab -->
-            <section class="tab-content" id="valuation">
-                <div class="content-grid">
-                    <div class="glass-card">
-                        <h3 class="card-title">💎 Berkus Method</h3>
-                        <div class="valuation-method">
-                            <div class="berkus-factor">
-                                <label>Sound Idea ($0-500K):</label>
-                                <input type="range" id="berkus-idea" min="0" max="500000" value="500000" step="50000">
-                                <span class="factor-value" id="berkus-idea-value">$500K</span>
-                            </div>
-                            <div class="berkus-factor">
-                                <label>Prototype ($0-500K):</label>
-                                <input type="range" id="berkus-prototype" min="0" max="500000" value="500000" step="50000">
-                                <span class="factor-value" id="berkus-prototype-value">$500K</span>
-                            </div>
-                            <div class="berkus-factor">
-                                <label>Quality Management ($0-1M):</label>
-                                <input type="range" id="berkus-management" min="0" max="1000000" value="1000000" step="50000">
-                                <span class="factor-value" id="berkus-management-value">$1M</span>
-                            </div>
-                            <div class="berkus-factor">
-                                <label>Strategic Relationships ($0-1M):</label>
-                                <input type="range" id="berkus-relationships" min="0" max="1000000" value="500000" step="50000">
-                                <span class="factor-value" id="berkus-relationships-value">$500K</span>
-                            </div>
-                            <div class="berkus-factor">
-                                <label>Product Rollout/Sales ($0-1M):</label>
-                                <input type="range" id="berkus-sales" min="0" max="1000000" value="1000000" step="50000">
-                                <span class="factor-value" id="berkus-sales-value">$1M</span>
-                            </div>
-                            <div class="method-total">
-                                <strong>Berkus Total: <span id="berkus-total">$3.5M</span></strong>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card">
-                        <h3 class="card-title">📋 Scorecard Method</h3>
-                        <div class="valuation-method">
-                            <div class="scorecard-factor">
-                                <label>Management (30%):</label>
-                                <input type="range" id="scorecard-management" min="0.5" max="1.5" value="1.2" step="0.1">
-                                <span class="factor-value" id="scorecard-management-value">1.2x</span>
-                            </div>
-                            <div class="scorecard-factor">
-                                <label>Market Opportunity (25%):</label>
-                                <input type="range" id="scorecard-market" min="0.5" max="1.5" value="1.3" step="0.1">
-                                <span class="factor-value" id="scorecard-market-value">1.3x</span>
-                            </div>
-                            <div class="scorecard-factor">
-                                <label>Product/Technology (15%):</label>
-                                <input type="range" id="scorecard-product" min="0.5" max="1.5" value="1.4" step="0.1">
-                                <span class="factor-value" id="scorecard-product-value">1.4x</span>
-                            </div>
-                            <div class="scorecard-factor">
-                                <label>Competitive Environment (10%):</label>
-                                <input type="range" id="scorecard-competition" min="0.5" max="1.5" value="1.1" step="0.1">
-                                <span class="factor-value" id="scorecard-competition-value">1.1x</span>
-                            </div>
-                            <div class="scorecard-factor">
-                                <label>Marketing/Sales (10%):</label>
-                                <input type="range" id="scorecard-marketing" min="0.5" max="1.5" value="1.0" step="0.1">
-                                <span class="factor-value" id="scorecard-marketing-value">1.0x</span>
-                            </div>
-                            <div class="scorecard-factor">
-                                <label>Need for Financing (10%):</label>
-                                <input type="range" id="scorecard-financials" min="0.5" max="1.5" value="1.1" step="0.1">
-                                <span class="factor-value" id="scorecard-financials-value">1.1x</span>
-                            </div>
-                            <div class="method-total">
-                                <strong>Scorecard Total: <span id="scorecard-total">$42.8M</span></strong>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card">
-                        <h3 class="card-title">⚠️ Risk Factor Summation</h3>
-                        <div class="valuation-method">
-                            <div class="risk-factor">
-                                <label>Management Risk:</label>
-                                <select id="risk-management" class="glass-select">
-                                    <option value="0">No Risk (+$0)</option>
-                                    <option value="-250000">Low Risk (-$250K)</option>
-                                    <option value="-500000">Normal Risk (-$500K)</option>
-                                    <option value="-750000">High Risk (-$750K)</option>
-                                </select>
-                            </div>
-                            <div class="risk-factor">
-                                <label>Stage of Business:</label>
-                                <select id="risk-stage" class="glass-select">
-                                    <option value="-500000">Idea Stage (-$500K)</option>
-                                    <option value="-250000">Prototype (-$250K)</option>
-                                    <option value="0">Early Revenue (+$0)</option>
-                                    <option value="250000">Growth (+$250K)</option>
-                                </select>
-                            </div>
-                            <div class="method-total">
-                                <strong>Risk-Adjusted: <span id="risk-total">$35.5M</span></strong>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card">
-                        <h3 class="card-title">🔧 Cost to Duplicate</h3>
-                        <div class="valuation-method">
-                            <div class="cost-factor">
-                                <label>Development Cost:</label>
-                                <input type="number" id="dev-cost" value="2000000" min="500000" max="10000000" step="100000">
-                            </div>
-                            <div class="cost-factor">
-                                <label>Market Premium Multiplier:</label>
-                                <input type="range" id="market-premium" min="1" max="5" value="2.5" step="0.1">
-                                <span class="factor-value" id="market-premium-value">2.5x</span>
-                            </div>
-                            <div class="method-total">
-                                <strong>Cost to Duplicate: <span id="duplicate-total">$5M</span></strong>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card valuation-summary">
-                        <h3 class="card-title"><i class="fas fa-calculator"></i> Valuation Summary 
-                            <a href="https://www.berkonomics.com/" class="reference-link" target="_blank">³</a>
-                        </h3>
-                        <div class="summary-methods">
-                            <div class="summary-row">
-                                <span>Berkus Method:</span>
-                                <span id="summary-berkus">$3.5M</span>
-                            </div>
-                            <div class="summary-row">
-                                <span>Scorecard Method:</span>
-                                <span id="summary-scorecard">$42.8M</span>
-                            </div>
-                            <div class="summary-row">
-                                <span>Risk Factor Method:</span>
-                                <span id="summary-risk">$35.5M</span>
-                            </div>
-                            <div class="summary-row">
-                                <span>Cost to Duplicate:</span>
-                                <span id="summary-duplicate">$5M</span>
-                            </div>
-                            <div class="summary-row total">
-                                <span>Weighted Average:</span>
-                                <span id="average-valuation">$21.7M</span>
-                            </div>
-                        </div>
-                        <div class="npv-badge" id="valuation-npv">
-                            NPV: $2.1B (at 12% discount)
-                        </div>
-                    </div>
-
-                    <div class="glass-card full-width">
-                        <h3 class="card-title"><i class="fas fa-route"></i> Comprehensive Valuation Path 
-                            <a href="#valuation-methodology" class="reference-link">⁴</a>
-                        </h3>
-                        <div class="valuation-path">
-                            <div class="valuation-step">
-                                <div class="valuation-step-number">1</div>
-                                <div class="valuation-step-content">
-                                    <div class="valuation-step-title">Market Size Validation</div>
-                                    <div class="valuation-step-desc">$49.3B content writing economy with 4 identified segments</div>
-                                </div>
-                                <div class="valuation-step-value">$49.3B TAM</div>
-                            </div>
-                            
-                            <div class="valuation-step">
-                                <div class="valuation-step-number">2</div>
-                                <div class="valuation-step-content">
-                                    <div class="valuation-step-title">Early-Stage Valuation (Berkus)</div>
-                                    <div class="valuation-step-desc">Based on idea strength, prototype, and management quality</div>
-                                </div>
-                                <div class="valuation-step-value" id="path-berkus">$3.5M</div>
-                            </div>
-                            
-                            <div class="valuation-step">
-                                <div class="valuation-step-number">3</div>
-                                <div class="valuation-step-content">
-                                    <div class="valuation-step-title">Peer Comparison (Scorecard)</div>
-                                    <div class="valuation-step-desc">Compared to similar pre-revenue AI companies</div>
-                                </div>
-                                <div class="valuation-step-value" id="path-scorecard">$42.8M</div>
-                            </div>
-                            
-                            <div class="valuation-step">
-                                <div class="valuation-step-number">4</div>
-                                <div class="valuation-step-content">
-                                    <div class="valuation-step-title">Revenue Multiple Analysis</div>
-                                    <div class="valuation-step-desc">Based on Year 3 projected revenue of $85.4M at 6-12x multiple</div>
-                                </div>
-                                <div class="valuation-step-value">$512M - $1.02B</div>
-                            </div>
-                            
-                            <div class="valuation-step">
-                                <div class="valuation-step-number">5</div>
-                                <div class="valuation-step-content">
-                                    <div class="valuation-step-title">DCF Analysis (Terminal Value)</div>
-                                    <div class="valuation-step-desc">5-year discounted cash flows plus terminal value</div>
-                                </div>
-                                <div class="valuation-step-value" id="path-dcf">$2.84B</div>
-                            </div>
-                            
-                            <div class="valuation-step">
-                                <div class="valuation-step-number">6</div>
-                                <div class="valuation-step-content">
-                                    <div class="valuation-step-title">Market Comparables</div>
-                                    <div class="valuation-step-desc">OpenAI ($80B+), Anthropic ($15B+) at similar revenue stages</div>
-                                </div>
-                                <div class="valuation-step-value">$5B - $15B</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- DCF Analysis Tab -->
-            <section class="tab-content" id="dcf">
-                <div class="content-grid">
-                    <div class="glass-card controls-panel">
-                        <h3 class="card-title"><i class="fas fa-sliders-h"></i> DCF Parameters</h3>
-                        <div class="dcf-controls">
-                            <div class="control-group">
-                                <label for="dcf-discount-rate">Discount Rate (WACC):</label>
-                                <input type="range" id="dcf-discount-rate" min="8" max="20" value="12" step="0.5">
-                                <span class="control-value" id="dcf-discount-rate-value">12.0%</span>
-                            </div>
-                            <div class="control-group">
-                                <label for="dcf-terminal-growth">Terminal Growth Rate:</label>
-                                <input type="range" id="dcf-terminal-growth" min="1" max="6" value="3" step="0.1">
-                                <span class="control-value" id="dcf-terminal-growth-value">3.0%</span>
-                            </div>
-                            <div class="control-group">
-                                <label for="dcf-projection-years">Projection Years:</label>
-                                <select id="dcf-projection-years" class="glass-select">
-                                    <option value="5" selected>5 Years</option>
-                                    <option value="7">7 Years</option>
-                                    <option value="10">10 Years</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card full-width">
-                        <h3 class="card-title"><i class="fas fa-table"></i> DCF Projection Table</h3>
-                        <div class="dcf-table-container">
-                            <table class="dcf-table" id="dcf-projections">
-                                <thead>
-                                    <tr>
-                                        <th>Year</th>
-                                        <th>Revenue</th>
-                                        <th>EBITDA</th>
-                                        <th>Free Cash Flow</th>
-                                        <th>PV Factor</th>
-                                        <th>Present Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dcf-tbody">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card">
-                        <h3 class="card-title"><i class="fas fa-calculator"></i> DCF Results</h3>
-                        <div class="dcf-results-display">
-                            <div class="dcf-result">
-                                <div class="result-label">Sum of PV Cash Flows:</div>
-                                <div class="result-value" id="pv-cash-flows">$1.8B</div>
-                            </div>
-                            <div class="dcf-result">
-                                <div class="result-label">Terminal Value (PV):</div>
-                                <div class="result-value" id="terminal-value">$1.04B</div>
-                            </div>
-                            <div class="dcf-result highlight">
-                                <div class="result-label">Enterprise Value:</div>
-                                <div class="result-value" id="enterprise-value">$2.84B</div>
-                            </div>
-                            <div class="dcf-result">
-                                <div class="result-label">Equity Value:</div>
-                                <div class="result-value" id="equity-value">$2.84B</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card full-width">
-                        <h3 class="card-title"><i class="fas fa-chart-area"></i> DCF Analysis Chart</h3>
-                        <canvas id="dcfChart" width="800" height="400"></canvas>
-                    </div>
-                    
-                    <!-- NPV Over Time Visualization -->
-                    <div class="glass-card full-width compact-card">
-                        <h3 class="card-title"><i class="fas fa-chart-line"></i> NPV Evolution Over Time</h3>
-                        <div class="npv-timeline-container">
-                            <canvas id="npvTimelineChart" width="800" height="300"></canvas>
-                        </div>
-                        <div class="npv-insights">
-                            <div class="insight-card">
-                                <div class="insight-label">Peak NPV Year</div>
-                                <div class="insight-value" id="peak-npv-year">2030</div>
-                            </div>
-                            <div class="insight-card">
-                                <div class="insight-label">NPV Growth Rate</div>
-                                <div class="insight-value" id="npv-growth-rate">285%</div>
-                            </div>
-                            <div class="insight-card">
-                                <div class="insight-label">Break-even NPV</div>
-                                <div class="insight-value" id="breakeven-npv-year">2027</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Funding Strategy Tab -->
-            <section class="tab-content" id="funding">
-                <div class="content-grid">
-                    <div class="glass-card">
-                        <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> Funding Overview</h3>
-                        <div class="funding-summary">
-                            <div class="funding-item">
-                                <label>Funding Amount:</label>
-                                <div class="funding-input">
-                                    <span>$</span>
-                                    <input type="number" id="funding-request" value="5000000" min="1000000" max="50000000" step="1000000">
-                                </div>
-                            </div>
-                            <div class="funding-metric">
-                                <label>Pre-money Valuation:</label>
-                                <span id="final-pre-money">$40M</span>
-                            </div>
-                            <div class="funding-metric">
-                                <label>Post-money Valuation:</label>
-                                <span id="post-money">$50M</span>
-                            </div>
-                            <div class="funding-metric">
-                                <label>Equity Percentage:</label>
-                                <span id="equity-percentage">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card">
-                        <h3 class="card-title">💸 Use of Funds</h3>
-                        <div class="funds-allocation">
-                            <div class="allocation-control tooltip-term">
-                                <label>Product Development:</label>
-                                <input type="range" id="product-allocation" min="20" max="60" value="40">
-                                <span id="product-amount">$4M (40%)</span>
-                                <div class="tooltip">
-                                    <div class="tooltip-header">Product Development</div>
-                                    <div class="tooltip-content">Core AI platform development, context management system, user interface, and API development.</div>
-                                    <div class="tooltip-basis">Includes 15 engineers, infrastructure, and development tools over 18 months</div>
-                                </div>
-                            </div>
-                            <div class="allocation-control tooltip-term">
-                                <label>Marketing & Sales:</label>
-                                <input type="range" id="marketing-allocation" min="15" max="40" value="25">
-                                <span id="marketing-amount">$2.5M (25%)</span>
-                                <div class="tooltip">
-                                    <div class="tooltip-header">Marketing & Sales</div>
-                                    <div class="tooltip-content">Customer acquisition, brand building, sales team, partnerships, and go-to-market strategy execution.</div>
-                                    <div class="tooltip-basis">Target CAC of $45-$8500 per customer across segments with 3.3x average LTV/CAC</div>
-                                </div>
-                            </div>
-                            <div class="allocation-control tooltip-term">
-                                <label>Operations & Infrastructure:</label>
-                                <input type="range" id="operations-allocation" min="10" max="30" value="20">
-                                <span id="operations-amount">$2M (20%)</span>
-                                <div class="tooltip">
-                                    <div class="tooltip-header">Operations & Infrastructure</div>
-                                    <div class="tooltip-content">Cloud infrastructure (AWS/Azure), security, compliance, customer support, and operational scaling.</div>
-                                    <div class="tooltip-basis">Supports 100K+ users with 10M+ token processing capability and 99.9% uptime</div>
-                                </div>
-                            </div>
-                            <div class="allocation-control tooltip-term">
-                                <label>Working Capital:</label>
-                                <input type="range" id="working-capital-allocation" min="5" max="25" value="15">
-                                <span id="working-capital-amount">$1.5M (15%)</span>
-                                <div class="tooltip">
-                                    <div class="tooltip-header">Working Capital</div>
-                                    <div class="tooltip-content">Cash buffer for operational expenses, legal fees, accounting, insurance, and unexpected opportunities.</div>
-                                    <div class="tooltip-basis">6 months operating expenses buffer plus strategic reserves for market opportunities</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card full-width">
-                        <h3 class="card-title"><i class="fas fa-flag-checkered"></i> Key Milestones</h3>
-                        <div class="milestone-timeline">
-                            <div class="milestone-item">
-                                <div class="milestone-date">Month 6</div>
-                                <div class="milestone-title">Beta Launch</div>
-                                <div class="milestone-desc">1,000 beta users • Core functionality validated</div>
-                            </div>
-                            <div class="milestone-item">
-                                <div class="milestone-date">Month 12</div>
-                                <div class="milestone-title">Market Entry</div>
-                                <div class="milestone-desc">10,000 paying customers • Product-market fit</div>
-                            </div>
-                            <div class="milestone-item highlight">
-                                <div class="milestone-date">Month 19</div>
-                                <div class="milestone-title">Break-even</div>
-                                <div class="milestone-desc">Monthly recurring revenue exceeds costs</div>
-                            </div>
-                            <div class="milestone-item">
-                                <div class="milestone-date">Month 24</div>
-                                <div class="milestone-title">Scale Phase</div>
-                                <div class="milestone-desc">$50M ARR • Enterprise market penetration</div>
-                            </div>
-                            <div class="milestone-item">
-                                <div class="milestone-date">Month 36</div>
-                                <div class="milestone-title">Series A</div>
-                                <div class="milestone-desc">$200M ARR • Next funding round</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card">
-                        <h3 class="card-title">🚪 Exit Scenarios</h3>
-                        <div class="exit-scenarios">
-                            <div class="exit-scenario">
-                                <h4>Strategic Acquisition (Year 3-4)</h4>
-                                <div class="scenario-details">
-                                    <div class="detail-row">
-                                        <span>Valuation Range:</span>
-                                        <span>$500M - $1.2B</span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span>Revenue Multiple:</span>
-                                        <span>6-12x ARR</span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span>Investor Return:</span>
-                                        <span>12.5x - 30x</span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span>Potential Acquirers:</span>
-                                        <span>Microsoft, Google, Adobe</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="exit-scenario">
-                                <h4>IPO (Year 5-7)</h4>
-                                <div class="scenario-details">
-                                    <div class="detail-row">
-                                        <span>Valuation Range:</span>
-                                        <span>$2B - $8B</span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span>Revenue Multiple:</span>
-                                        <span>8-15x ARR</span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span>Investor Return:</span>
-                                        <span>50x - 200x</span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span>Market Comparables:</span>
-                                        <span>OpenAI, Anthropic</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card full-width">
-                        <h3 class="card-title"><i class="fas fa-pie-chart"></i> Funding Allocation</h3>
-                        <canvas id="fundingChart" width="800" height="400"></canvas>
                     </div>
                 </div>
             </section>

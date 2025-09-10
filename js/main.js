@@ -26,6 +26,7 @@ class InvestorPresentation {
         this.initAICostChart();
         this.initGeneticAlgorithmDemo();
         this.initHoverCards();
+        this.initMermaidDiagrams();
         this.updateAllMetrics();
     }
     
@@ -1402,3 +1403,51 @@ function initializeTooltips() {
 
     console.log('✅ Tooltip system initialized with comprehensive term definitions and number explanations');
 }
+
+// Initialize Mermaid diagrams
+function initMermaidDiagrams() {
+    if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#007bff',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#004085',
+                lineColor: '#6c757d',
+                secondaryColor: '#e9ecef',
+                tertiaryColor: '#f8f9fa'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true
+            },
+            sequence: {
+                useMaxWidth: true,
+                actorMargin: 50,
+                diagramMarginX: 50,
+                diagramMarginY: 10,
+                boxMargin: 10,
+                boxTextMargin: 5,
+                noteMargin: 10,
+                messageMargin: 35
+            }
+        });
+        
+        // Re-render mermaid diagrams when tabs are switched
+        document.addEventListener('tab-switched', () => {
+            setTimeout(() => {
+                mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+            }, 100);
+        });
+        
+        console.log('✅ Mermaid diagrams initialized');
+    } else {
+        console.warn('⚠️ Mermaid library not loaded');
+    }
+}
+
+// Call initMermaidDiagrams when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initMermaidDiagrams();
+});
