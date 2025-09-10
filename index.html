@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/5.12.8/antd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -2650,6 +2651,136 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                
+                <div class="sub-content" id="infrastructure">
+                    <!-- GPU Cost Analysis Section -->
+                    <div class="glass-card compact-card">
+                        <h3 class="card-title"><i class="fas fa-server"></i> GPU Infrastructure Analysis</h3>
+                        <div class="gpu-comparison-grid">
+                            <div class="gpu-option">
+                                <h4>NVIDIA T4</h4>
+                                <div class="gpu-specs">
+                                    <span class="spec">Memory: 16GB</span>
+                                    <span class="spec">Cost: $0.35/hr</span>
+                                    <span class="spec">Concurrent: 8 users</span>
+                                </div>
+                                <div class="cost-monthly">$252/month per GPU</div>
+                            </div>
+                            <div class="gpu-option recommended">
+                                <h4>NVIDIA L4</h4>
+                                <div class="gpu-specs">
+                                    <span class="spec">Memory: 24GB</span>
+                                    <span class="spec">Cost: $0.60/hr</span>
+                                    <span class="spec">Concurrent: 15 users</span>
+                                </div>
+                                <div class="cost-monthly">$432/month per GPU</div>
+                                <div class="recommended-badge">Best ROI</div>
+                            </div>
+                            <div class="gpu-option premium">
+                                <h4>NVIDIA A100</h4>
+                                <div class="gpu-specs">
+                                    <span class="spec">Memory: 80GB</span>
+                                    <span class="spec">Cost: $3.20/hr</span>
+                                    <span class="spec">Concurrent: 45 users</span>
+                                </div>
+                                <div class="cost-monthly">$2,304/month per GPU</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Behavior Models Section -->
+                    <div class="glass-card compact-card">
+                        <h3 class="card-title">👥 User Behavior & Cost Impact</h3>
+                        <div class="user-behavior-grid">
+                            <div class="behavior-model">
+                                <h4><i class="fas fa-pen"></i> Content Author</h4>
+                                <div class="behavior-stats">
+                                    <div class="stat">Avg Session: 45min</div>
+                                    <div class="stat">Tokens/Session: 25K</div>
+                                    <div class="stat">Peak Hours: 9AM-5PM</div>
+                                    <div class="stat">GPU Cost: $8.5/month</div>
+                                </div>
+                            </div>
+                            <div class="behavior-model">
+                                <h4>🔬 Researcher</h4>
+                                <div class="behavior-stats">
+                                    <div class="stat">Avg Session: 2.5hrs</div>
+                                    <div class="stat">Tokens/Session: 150K</div>
+                                    <div class="stat">Peak Hours: 24/7</div>
+                                    <div class="stat">GPU Cost: $45/month</div>
+                                </div>
+                            </div>
+                            <div class="behavior-model">
+                                <h4>⚕️ Medical Professional</h4>
+                                <div class="behavior-stats">
+                                    <div class="stat">Avg Session: 20min</div>
+                                    <div class="stat">Tokens/Session: 50K</div>
+                                    <div class="stat">Peak Hours: 7AM-7PM</div>
+                                    <div class="stat">GPU Cost: $28/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud Provider Comparison -->
+                    <div class="glass-card compact-card">
+                        <h3 class="card-title">☁️ Multi-Cloud Cost Analysis</h3>
+                        <div class="cloud-cost-table">
+                            <table class="excel-table">
+                                <thead>
+                                    <tr>
+                                        <th>Provider</th>
+                                        <th>GPU Type</th>
+                                        <th>$/Hour</th>
+                                        <th>Monthly Cost</th>
+                                        <th>Concurrent Users</th>
+                                        <th>Cost/User</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="aws-row">
+                                        <td>AWS</td>
+                                        <td>p4d.24xlarge (8xA100)</td>
+                                        <td>$25.60</td>
+                                        <td>$18,432</td>
+                                        <td>360</td>
+                                        <td>$51.20</td>
+                                    </tr>
+                                    <tr class="gcp-row">
+                                        <td>Google Cloud</td>
+                                        <td>a2-highgpu-8g (8xA100)</td>
+                                        <td>$22.40</td>
+                                        <td>$16,128</td>
+                                        <td>360</td>
+                                        <td>$44.80</td>
+                                    </tr>
+                                    <tr class="azure-row">
+                                        <td>Azure</td>
+                                        <td>ND96asr_v4 (8xA100)</td>
+                                        <td>$27.20</td>
+                                        <td>$19,584</td>
+                                        <td>360</td>
+                                        <td>$54.40</td>
+                                    </tr>
+                                    <tr class="on-premise-row">
+                                        <td>On-Premise</td>
+                                        <td>8xA100 + Infrastructure</td>
+                                        <td>$20.83</td>
+                                        <td>$15,000</td>
+                                        <td>360</td>
+                                        <td>$41.67</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Infrastructure Chart -->
+                    <div class="glass-card full-width compact-card">
+                        <h3 class="card-title">🏗️ Infrastructure Scaling Analysis</h3>
+                        <canvas id="infrastructureChart" width="800" height="300"></canvas>
                     </div>
                 </div>
             </section>
