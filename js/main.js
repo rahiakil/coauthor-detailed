@@ -15,7 +15,7 @@ class InvestorPresentation {
     
     init() {
         this.initTabNavigation();
-        this.initSubTabNavigation();
+        // this.initSubTabNavigation(); // Disabled - converted sub-tabs to main tabs
         this.initCollapsibleBanner();
         this.initBannerInteractions();
         this.initInfrastructureCalculator();
@@ -26,7 +26,8 @@ class InvestorPresentation {
         this.initAICostChart();
         this.initGeneticAlgorithmDemo();
         this.initHoverCards();
-        this.initMermaidDiagrams();
+        this.initSourcesPanel();
+        initMermaidDiagrams(); // Call global function
         this.updateAllMetrics();
     }
     
@@ -54,30 +55,79 @@ class InvestorPresentation {
     }
     
     initSubTabNavigation() {
-        const subTabButtons = document.querySelectorAll('.sub-tab');
-        const subContents = document.querySelectorAll('.sub-content');
+        console.log('🔧 Initializing SubTab Navigation...');
         
-        subTabButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
+        // Add click event to document body and use event delegation
+        document.body.addEventListener('click', (e) => {
+            // Check if clicked element is a sub-tab button
+            if (e.target.classList.contains('sub-tab')) {
                 e.preventDefault();
+                e.stopPropagation();
+                
+                const button = e.target;
                 const subTabId = button.dataset.subtab;
+                console.log('🖱️ SUB-TAB CLICKED:', subTabId);
                 
-                // Get the parent tab to only affect sub-tabs within the same main tab
+                // Get the parent tab
                 const parentTab = button.closest('.tab-content');
-                if (!parentTab) return;
+                if (!parentTab) {
+                    console.error('❌ No parent tab found for:', subTabId);
+                    return;
+                }
+                console.log('📂 Parent tab:', parentTab.id);
                 
-                // Remove active class from all sub-tabs and sub-contents within this parent
-                parentTab.querySelectorAll('.sub-tab').forEach(btn => btn.classList.remove('active'));
-                parentTab.querySelectorAll('.sub-content').forEach(content => content.classList.remove('active'));
+                // Remove active from all sub-elements in this parent
+                const parentSubTabs = parentTab.querySelectorAll('.sub-tab');
+                const parentSubContents = parentTab.querySelectorAll('.sub-content');
                 
-                // Add active class to clicked sub-tab and corresponding sub-content
+                console.log('🔄 Deactivating', parentSubTabs.length, 'buttons and', parentSubContents.length, 'contents');
+                
+                parentSubTabs.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                parentSubContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Activate clicked sub-tab and corresponding content
                 button.classList.add('active');
+                
                 const subContent = document.getElementById(subTabId);
                 if (subContent) {
                     subContent.classList.add('active');
+                    console.log('✅ SUCCESSFULLY ACTIVATED:', subTabId);
+                    console.log('📋 Content classes:', subContent.className);
+                    
+                    // Trigger chart creation for newly visible content
+                    setTimeout(() => {
+                        if (window.charts) {
+                            window.charts.createCharts();
+                        }
+                    }, 50);
+                } else {
+                    console.error('❌ ELEMENT NOT FOUND:', subTabId);
+                    // Debug: list all sub-content elements
+                    const allSubContent = document.querySelectorAll('.sub-content');
+                    console.log('🔍 Available sub-content elements:');
+                    allSubContent.forEach((el, i) => {
+                        console.log(`   ${i}: ${el.id} (classes: ${el.className})`);
+                    });
                 }
-            });
+                
+                console.log('---END SUB-TAB CLICK---');
+            }
         });
+        
+        console.log('✅ SubTab Navigation initialized with event delegation');
+        
+        // Log available sub-tabs for debugging
+        setTimeout(() => {
+            const subTabButtons = document.querySelectorAll('.sub-tab');
+            console.log('📊 Found', subTabButtons.length, 'sub-tab buttons:');
+            subTabButtons.forEach((btn, i) => {
+                console.log(`   ${i}: ${btn.dataset.subtab} (active: ${btn.classList.contains('active')})`);
+            });
+        }, 500);
     }
     
     initCollapsibleBanner() {
@@ -1276,6 +1326,45 @@ class InvestorPresentation {
         
         console.log('✅ ISCO hover cards initialized');
     }
+
+    initSourcesPanel() {
+        const sourcesPanel = document.getElementById('sources-panel');
+        const sourcesToggleBtn = document.getElementById('sources-toggle-btn');
+        const sourcesCloseBtn = document.getElementById('sources-close');
+
+        if (!sourcesPanel || !sourcesToggleBtn) {
+            console.warn('Sources panel elements not found');
+            return;
+        }
+
+        // Toggle panel on button click
+        sourcesToggleBtn.addEventListener('click', () => {
+            sourcesPanel.classList.toggle('active');
+        });
+
+        // Close panel on close button click
+        if (sourcesCloseBtn) {
+            sourcesCloseBtn.addEventListener('click', () => {
+                sourcesPanel.classList.remove('active');
+            });
+        }
+
+        // Close panel when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sourcesPanel.contains(e.target) && !sourcesToggleBtn.contains(e.target)) {
+                sourcesPanel.classList.remove('active');
+            }
+        });
+
+        // Close panel on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                sourcesPanel.classList.remove('active');
+            }
+        });
+
+        console.log('✅ Sources panel initialized');
+    }
 }
 
 // Initialize the application when DOM is loaded
@@ -1408,19 +1497,20 @@ function initializeTooltips() {
 function initMermaidDiagrams() {
     if (typeof mermaid !== 'undefined') {
         mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
+            startOnLoad: false,
+            theme: 'base',
             themeVariables: {
-                primaryColor: '#007bff',
-                primaryTextColor: '#ffffff',
-                primaryBorderColor: '#004085',
-                lineColor: '#6c757d',
-                secondaryColor: '#e9ecef',
-                tertiaryColor: '#f8f9fa'
+                primaryColor: '#10b981',
+                primaryTextColor: '#0f3821',
+                primaryBorderColor: '#059669',
+                lineColor: '#6b7280',
+                secondaryColor: '#f3f4f6',
+                tertiaryColor: '#ffffff'
             },
             flowchart: {
                 useMaxWidth: true,
-                htmlLabels: true
+                htmlLabels: true,
+                curve: 'basis'
             },
             sequence: {
                 useMaxWidth: true,
@@ -1431,13 +1521,41 @@ function initMermaidDiagrams() {
                 boxTextMargin: 5,
                 noteMargin: 10,
                 messageMargin: 35
-            }
+            },
+            securityLevel: 'loose',
+            maxTextSize: 90000
         });
         
+        // Initial render with error handling
+        setTimeout(() => {
+            const mermaidElements = document.querySelectorAll('.mermaid');
+            mermaidElements.forEach((element, index) => {
+                try {
+                    if (!element.hasAttribute('data-processed')) {
+                        element.setAttribute('data-processed', 'true');
+                        mermaid.init(undefined, element);
+                    }
+                } catch (error) {
+                    console.warn(`⚠️ Mermaid diagram ${index} failed to render:`, error);
+                    element.innerHTML = `<div style="padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; color: #dc2626;">
+                        <strong>Diagram Error:</strong> Unable to render diagram. Please check syntax.
+                    </div>`;
+                }
+            });
+        }, 200);
+
         // Re-render mermaid diagrams when tabs are switched
         document.addEventListener('tab-switched', () => {
             setTimeout(() => {
-                mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+                const mermaidElements = document.querySelectorAll('.mermaid:not([data-processed])');
+                mermaidElements.forEach((element, index) => {
+                    try {
+                        element.setAttribute('data-processed', 'true');
+                        mermaid.init(undefined, element);
+                    } catch (error) {
+                        console.warn(`⚠️ Mermaid diagram failed to render on tab switch:`, error);
+                    }
+                });
             }, 100);
         });
         

@@ -412,22 +412,61 @@ class Charts {
     
     init() {
         // Wait for DOM to be fully loaded
+        // Delay chart creation to ensure DOM is fully loaded and styled
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.createCharts());
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => this.createCharts(), 100);
+            });
         } else {
-            this.createCharts();
+            setTimeout(() => this.createCharts(), 100);
         }
     }
     
     createCharts() {
-        // Create each chart
+        // Only create charts that are currently visible
         Object.keys(this.chartConfigs).forEach(chartName => {
-            const canvas = document.getElementById(`${chartName}Chart`);
-            if (canvas) {
-                const ctx = canvas.getContext('2d');
-                this.charts[chartName] = new Chart(ctx, this.chartConfigs[chartName]);
-            }
+            this.createChartIfVisible(chartName);
         });
+    }
+    
+    createChartIfVisible(chartName) {
+        try {
+            const canvas = document.getElementById(`${chartName}Chart`);
+            if (canvas && !this.charts[chartName]) {
+                // Check if the canvas is in a visible container
+                const isVisible = this.isElementVisible(canvas);
+                
+                if (isVisible) {
+                    const ctx = canvas.getContext('2d');
+                    // Ensure canvas has valid dimensions
+                    if (canvas.clientWidth > 0 && canvas.clientHeight > 0) {
+                        this.charts[chartName] = new Chart(ctx, this.chartConfigs[chartName]);
+                        console.log(`✅ Chart created: ${chartName} (${canvas.clientWidth}x${canvas.clientHeight})`);
+                    } else {
+                        console.warn(`⚠️ Chart canvas has invalid dimensions: ${chartName} (${canvas.clientWidth}x${canvas.clientHeight})`);
+                    }
+                } else {
+                    console.log(`📋 Chart canvas not visible, skipping: ${chartName}`);
+                }
+            } else if (!canvas) {
+                console.warn(`⚠️ Chart canvas not found: ${chartName}Chart`);
+            }
+        } catch (error) {
+            console.error(`❌ Error creating chart ${chartName}:`, error);
+        }
+    }
+    
+    isElementVisible(element) {
+        // Check if element and all parents are visible
+        let current = element;
+        while (current) {
+            const style = window.getComputedStyle(current);
+            if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') {
+                return false;
+            }
+            current = current.parentElement;
+        }
+        return true;
     }
     
     updateChartsForTab(tabId) {
@@ -463,20 +502,32 @@ class Charts {
     }
     
     updateFinancialChart() {
-        const chart = this.charts.financial;
-        if (chart && window.financialModels) {
-            // Get current scenario data
-            const scenario = window.financialModels.currentScenario;
-            const multiplier = window.financialModels.scenarios[scenario].revenueMultiplier;
-            
-            // Update revenue data
-            const baseRevenue = [2.1, 15.8, 85.4, 285.6, 723.4];
-            const baseFCF = [-8.5, -2.1, 34.2, 142.8, 361.7];
-            
-            chart.data.datasets[0].data = baseRevenue.map(r => r * multiplier);
-            chart.data.datasets[1].data = baseFCF.map(f => f * multiplier);
-            
-            chart.update();
+        try {
+            const chart = this.charts.financial;
+            if (chart && window.financialModels) {
+                // Get current scenario data
+                const scenario = window.financialModels.currentScenario || 'realistic';
+                const multiplier = window.financialModels.scenarios[scenario]?.revenueMultiplier || 1.0;
+                
+                // Update revenue data with validation
+                const baseRevenue = [2.1, 15.8, 85.4, 285.6, 723.4];
+                const baseFCF = [-8.5, -2.1, 34.2, 142.8, 361.7];
+                
+                const newRevenueData = baseRevenue.map(r => (r * multiplier) || 0);
+                const newFCFData = baseFCF.map(f => (f * multiplier) || 0);
+                
+                // Validate data before updating
+                if (newRevenueData.every(v => typeof v === 'number' && !isNaN(v)) &&
+                    newFCFData.every(v => typeof v === 'number' && !isNaN(v))) {
+                    chart.data.datasets[0].data = newRevenueData;
+                    chart.data.datasets[1].data = newFCFData;
+                    chart.update();
+                } else {
+                    console.warn('⚠️ Invalid data in financial chart update');
+                }
+            }
+        } catch (error) {
+            console.error('❌ Error updating financial chart:', error);
         }
     }
     

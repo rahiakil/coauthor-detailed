@@ -455,6 +455,13 @@ class LiquidGlassUI {
     trackTabView(tabId) {
         // Analytics could be added here
         console.log(`Tab viewed: ${tabId}`);
+        
+        // Trigger chart creation for newly visible tab
+        setTimeout(() => {
+            if (window.charts) {
+                window.charts.createCharts();
+            }
+        }, 100);
     }
     
     // Public methods
