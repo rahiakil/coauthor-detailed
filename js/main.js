@@ -1493,75 +1493,155 @@ function initializeTooltips() {
     console.log('✅ Tooltip system initialized with comprehensive term definitions and number explanations');
 }
 
-// Initialize Mermaid diagrams
+// Initialize Mermaid diagrams - Simplified approach
 function initMermaidDiagrams() {
     if (typeof mermaid !== 'undefined') {
+        console.log('🔧 Initializing Mermaid diagrams...');
+        
+        // Configure Mermaid with startOnLoad disabled for manual control
         mermaid.initialize({
             startOnLoad: false,
-            theme: 'base',
+            theme: 'default',
             themeVariables: {
                 primaryColor: '#10b981',
                 primaryTextColor: '#0f3821',
                 primaryBorderColor: '#059669',
-                lineColor: '#6b7280',
-                secondaryColor: '#f3f4f6',
-                tertiaryColor: '#ffffff'
+                lineColor: '#6b7280'
             },
             flowchart: {
                 useMaxWidth: true,
-                htmlLabels: true,
-                curve: 'basis'
+                htmlLabels: true
             },
             sequence: {
-                useMaxWidth: true,
-                actorMargin: 50,
-                diagramMarginX: 50,
-                diagramMarginY: 10,
-                boxMargin: 10,
-                boxTextMargin: 5,
-                noteMargin: 10,
-                messageMargin: 35
+                useMaxWidth: true
             },
-            securityLevel: 'loose',
-            maxTextSize: 90000
+            securityLevel: 'loose'
         });
         
-        // Initial render with error handling
-        setTimeout(() => {
-            const mermaidElements = document.querySelectorAll('.mermaid');
-            mermaidElements.forEach((element, index) => {
+        console.log('✅ Mermaid initialized');
+        
+        // Main rendering function
+        window.renderMermaidDiagrams = async function() {
+            console.log('🔄 Rendering Mermaid diagrams...');
+            const allDiagrams = document.querySelectorAll('.mermaid');
+            console.log(`Found ${allDiagrams.length} total diagrams`);
+            
+            let rendered = 0;
+            
+            for (let i = 0; i < allDiagrams.length; i++) {
+                const element = allDiagrams[i];
+                
+                // Skip if already rendered (contains SVG)
+                if (element.querySelector('svg')) {
+                    continue;
+                }
+                
                 try {
-                    if (!element.hasAttribute('data-processed')) {
-                        element.setAttribute('data-processed', 'true');
-                        mermaid.init(undefined, element);
+                    const graphDefinition = element.textContent.trim();
+                    if (graphDefinition && !graphDefinition.includes('<svg')) {
+                        // Generate unique ID for this diagram
+                        const diagramId = `mermaid-diagram-${i}-${Date.now()}`;
+                        
+                        // Render the diagram
+                        const { svg } = await mermaid.render(diagramId, graphDefinition);
+                        
+                        // Replace content with rendered SVG
+                        element.innerHTML = svg;
+                        element.classList.add('mermaid-rendered');
+                        rendered++;
+                        
+                        console.log(`✅ Rendered diagram ${i + 1}/${allDiagrams.length}`);
                     }
                 } catch (error) {
-                    console.warn(`⚠️ Mermaid diagram ${index} failed to render:`, error);
-                    element.innerHTML = `<div style="padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; color: #dc2626;">
-                        <strong>Diagram Error:</strong> Unable to render diagram. Please check syntax.
-                    </div>`;
+                    console.error(`❌ Error rendering diagram ${i + 1}:`, error);
+                    element.innerHTML = `
+                        <div style="padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; color: #dc2626;">
+                            <strong>Diagram Render Error</strong><br>
+                            <small>${error.message || 'Invalid syntax'}</small>
+                        </div>
+                    `;
                 }
-            });
-        }, 200);
-
-        // Re-render mermaid diagrams when tabs are switched
-        document.addEventListener('tab-switched', () => {
-            setTimeout(() => {
-                const mermaidElements = document.querySelectorAll('.mermaid:not([data-processed])');
-                mermaidElements.forEach((element, index) => {
-                    try {
-                        element.setAttribute('data-processed', 'true');
-                        mermaid.init(undefined, element);
-                    } catch (error) {
-                        console.warn(`⚠️ Mermaid diagram failed to render on tab switch:`, error);
+            }
+            
+            console.log(`🎉 Rendered ${rendered} new diagrams`);
+        };
+        
+        // Initial render with multiple attempts
+        setTimeout(() => {
+            window.renderMermaidDiagrams();
+        }, 100);
+        
+        // Retry after longer delay for any missed diagrams
+        setTimeout(() => {
+            const unrendered = document.querySelectorAll('.mermaid:not(.mermaid-rendered)');
+            if (unrendered.length > 0) {
+                console.log(`🔄 Retrying ${unrendered.length} unrendered diagrams...`);
+                window.renderMermaidDiagrams();
+            }
+        }, 1000);
+        
+        // Re-render on tab switch
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-tab')) {
+                setTimeout(() => {
+                    if (window.renderMermaidDiagrams) {
+                        window.renderMermaidDiagrams();
                     }
-                });
-            }, 100);
+                }, 200);
+            }
         });
         
-        console.log('✅ Mermaid diagrams initialized');
     } else {
-        console.warn('⚠️ Mermaid library not loaded');
+        console.error('❌ Mermaid library not found');
+        
+        // Fallback: retry after a delay
+        setTimeout(() => {
+            if (typeof mermaid !== 'undefined') {
+                console.log('🔄 Mermaid found on retry, initializing...');
+                initMermaidDiagrams();
+            } else {
+                console.error('❌ Mermaid still not found after retry');
+            }
+        }, 2000);
+    }
+}
+
+// Zoom functionality for diagrams
+function zoomDiagram(button, factor) {
+    const card = button.closest('.glass-card');
+    const mermaidElement = card.querySelector('.diagram-zoomable');
+    
+    if (mermaidElement) {
+        let currentScale = parseFloat(mermaidElement.dataset.scale || '1');
+        currentScale *= factor;
+        
+        // Limit zoom range
+        currentScale = Math.max(0.5, Math.min(3, currentScale));
+        
+        mermaidElement.style.transform = `scale(${currentScale})`;
+        mermaidElement.style.transformOrigin = 'top left';
+        mermaidElement.dataset.scale = currentScale.toString();
+        
+        // Add overflow handling for zoomed content
+        if (currentScale > 1) {
+            mermaidElement.style.overflow = 'visible';
+            card.style.overflow = 'auto';
+        } else {
+            mermaidElement.style.overflow = '';
+            card.style.overflow = '';
+        }
+    }
+}
+
+function resetZoom(button) {
+    const card = button.closest('.glass-card');
+    const mermaidElement = card.querySelector('.diagram-zoomable');
+    
+    if (mermaidElement) {
+        mermaidElement.style.transform = '';
+        mermaidElement.style.overflow = '';
+        mermaidElement.dataset.scale = '1';
+        card.style.overflow = '';
     }
 }
 

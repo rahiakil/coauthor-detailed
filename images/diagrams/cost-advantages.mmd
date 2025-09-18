@@ -1,0 +1,69 @@
+graph LR
+    subgraph "Current Limitations"
+        A1[Small Context Windows<br/>200K tokens max]
+        A2[High Token Costs<br/>$30 per 1M tokens]
+        A3[Context Loss<br/>No memory between sessions]
+        A4[Manual Context Management<br/>Human intervention required]
+        
+        A1 --> A5[Limited Understanding]
+        A2 --> A6[Expensive Operations]
+        A3 --> A7[Repeated Context Setup]
+        A4 --> A8[Time-consuming Workflows]
+    end
+    
+    subgraph "With Infinimem Memory Agent"
+        B1[Massive Context Windows<br/>10M+ tokens active]
+        B2[Reduced Token Costs<br/>$0.14 per 1M tokens<br/>214x cost reduction]
+        B3[Persistent Memory<br/>Cross-session knowledge retention]
+        B4[Automated Context Packing<br/>AI-driven relevance ranking]
+        
+        B1 --> B5[Deep Document Understanding]
+        B2 --> B6[Cost-Effective Scaling]
+        B3 --> B7[Continuous Learning]
+        B4 --> B8[Seamless User Experience]
+    end
+    
+    subgraph "Future Trajectory"
+        C1[Context Windows Growing<br/>50M+ tokens possible]
+        C2[Costs Continuing to Drop<br/>Even more affordable]
+        C3[Memory Agent Learning<br/>Improved relevance over time]
+        
+        C1 --> C4[Enterprise-Scale Processing]
+        C2 --> C5[Mass Market Accessibility]
+        C3 --> C6[Superhuman Context Management]
+    end
+    
+    A5 --> B5
+    A6 --> B6
+    A7 --> B7
+    A8 --> B8
+    
+    B5 --> C4
+    B6 --> C5
+    B7 --> C6
+    B8 --> C6
+    
+    style A1 fill:#ffcdd2
+    style A2 fill:#ffcdd2
+    style A3 fill:#ffcdd2
+    style A4 fill:#ffcdd2
+    style A5 fill:#ff8a80
+    style A6 fill:#ff8a80
+    style A7 fill:#ff8a80
+    style A8 fill:#ff8a80
+    
+    style B1 fill:#c8e6c9
+    style B2 fill:#c8e6c9
+    style B3 fill:#c8e6c9
+    style B4 fill:#c8e6c9
+    style B5 fill:#4caf50
+    style B6 fill:#4caf50
+    style B7 fill:#4caf50
+    style B8 fill:#4caf50
+    
+    style C1 fill:#e1f5fe
+    style C2 fill:#e1f5fe
+    style C3 fill:#e1f5fe
+    style C4 fill:#2196f3
+    style C5 fill:#2196f3
+    style C6 fill:#2196f3

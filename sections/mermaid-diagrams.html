@@ -1,0 +1,196 @@
+<!-- Mermaid Architecture Diagrams -->
+
+<!-- Traditional Computer Architecture -->
+<div class="glass-card full-width">
+    <h3 class="card-title">🏗️ Traditional Computer Architecture: Detailed Vertical Flow</h3>
+    <div class="diagram-controls">
+        <button class="zoom-btn" onclick="zoomDiagram(this, 1.2)">🔍+</button>
+        <button class="zoom-btn" onclick="zoomDiagram(this, 0.8)">🔍-</button>
+        <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
+    </div>
+    <div class="mermaid diagram-zoomable">
+graph TD
+    subgraph "Traditional Computer System"
+        A[User Applications] --> B[System Calls]
+        B --> C[Operating System Kernel]
+        C --> D[Process Scheduler]
+        D --> E[Memory Manager]
+        E --> F[File System Manager]
+        F --> G[Device Driver Layer]
+        G --> H[Hardware Abstraction Layer]
+        H --> I[CPU Instruction Pipeline]
+        I --> J[Cache Controller]
+        J --> K[Memory Controller]
+        K --> L[Physical RAM Banks]
+        L --> M[Storage I/O Controller]
+        M --> N[Disk/SSD Hardware]
+        N --> O[Network Interface Controller]
+        O --> P[Hardware Registers]
+        
+        D -.->|Context Switch| D1[Process Context<br/>32-64 registers per task]
+        E -.->|Virtual Memory| E1[Page Table Management<br/>4KB page swapping]
+        I -.->|Pipeline Stalls| I1[Instruction Cache Misses<br/>Sequential bottlenecks]
+        J -.->|Cache Hierarchy| J1[L1/L2/L3 Cache Levels<br/>Limited by physical size]
+        K -.->|Memory Bandwidth| K1[DRAM Access Latency<br/>100+ cycle delays]
+        
+        P --> Q[Limited Context Storage<br/>No persistent reasoning state]
+    end
+    
+    style A fill:#e3f2fd
+    style B fill:#f3e5f5
+    style C fill:#fff8e1
+    style D fill:#ffebee
+    style E fill:#e8f5e8
+    style F fill:#fce4ec
+    style G fill:#f1f8e9
+    style H fill:#fff3e0
+    style I fill:#ff9999
+    style J fill:#ffcc99
+    style K fill:#c8e6c9
+    style L fill:#b39ddb
+    style M fill:#ffcdd2
+    style N fill:#dcedc8
+    style O fill:#f8bbd9
+    style P fill:#81c784
+    style Q fill:#ffab91
+    style D1 fill:#ffcf9e
+    style E1 fill:#ffcf9e
+    style I1 fill:#ffcf9e
+    style J1 fill:#ffcf9e
+    style K1 fill:#ffcf9e
+    </div>
+</div>
+
+<!-- Infinimem Operating System -->
+<div class="glass-card full-width">
+    <h3 class="card-title">🧠 Infinimem Operating System: Memory Agent & Reasoning Architecture</h3>
+    <div class="diagram-controls">
+        <button class="zoom-btn" onclick="zoomDiagram(this, 1.2)">🔍+</button>
+        <button class="zoom-btn" onclick="zoomDiagram(this, 0.8)">🔍-</button>
+        <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
+    </div>
+    <div class="mermaid diagram-zoomable">
+graph TD
+    subgraph "Infinimem Operating System"
+        A[User Intent & Context] --> B[Reasoning Orchestrator]
+        B --> C[Memory Agent<br/>🤖 Intelligent Context Manager]
+        C --> D[Context Window Manager<br/>10M+ tokens active processing]
+        D --> E[Semantic Memory Cache<br/>Vector-based relevance ranking]
+        E --> F[Corpus Memory<br/>Persistent knowledge base]
+        F --> G[Hierarchical Context Packing<br/>Most important = closest to model]
+        G --> H[Dynamic Token Allocation<br/>Adaptive context sizing]
+        H --> I[Multi-Modal Processing<br/>Text, code, documents, images]
+        I --> J[Agent Orchestration Layer<br/>Specialized reasoning agents]
+        J --> K[Output Generation<br/>Context-aware responses]
+        
+        C -.->|Learns & Reasons| C1[Previous Context Analysis<br/>Pattern recognition from history]
+        E -.->|Smart Retrieval| E1[Relevance Scoring<br/>Contextual similarity matching]
+        F -.->|Knowledge Base| F1[Persistent Memory<br/>Cross-session learning]
+        G -.->|Priority Queue| G1[Distance-based Importance<br/>Critical context stays closest]
+        H -.->|Cost Optimization| H1[Token Economics<br/>Cost per token ↓ 214x]
+        I -.->|Context Expansion| I1[Larger Windows<br/>10M → 50M+ tokens possible]
+        
+        K --> L[Enhanced Output Quality<br/>Rich contextual understanding]
+    end
+    
+    style A fill:#e3f2fd
+    style B fill:#81c784
+    style C fill:#4caf50
+    style D fill:#2196f3
+    style E fill:#9c27b0
+    style F fill:#ff9800
+    style G fill:#f44336
+    style H fill:#795548
+    style I fill:#607d8b
+    style J fill:#3f51b5
+    style K fill:#009688
+    style L fill:#8bc34a
+    style C1 fill:#c8e6c9
+    style E1 fill:#e1bee7
+    style F1 fill:#ffe0b2
+    style G1 fill:#ffcdd2
+    style H1 fill:#d7ccc8
+    style I1 fill:#cfd8dc
+    </div>
+</div>
+
+<!-- Cost & Context Advantages -->
+<div class="glass-card full-width">
+    <h3 class="card-title">📈 Infinimem Advantages: Cost Reduction & Context Expansion</h3>
+    <div class="diagram-controls">
+        <button class="zoom-btn" onclick="zoomDiagram(this, 1.2)">🔍+</button>
+        <button class="zoom-btn" onclick="zoomDiagram(this, 0.8)">🔍-</button>
+        <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
+    </div>
+    <div class="mermaid diagram-zoomable">
+graph LR
+    subgraph "Current Limitations"
+        A1[Small Context Windows<br/>200K tokens max]
+        A2[High Token Costs<br/>$30 per 1M tokens]
+        A3[Context Loss<br/>No memory between sessions]
+        A4[Manual Context Management<br/>Human intervention required]
+        
+        A1 --> A5[Limited Understanding]
+        A2 --> A6[Expensive Operations]
+        A3 --> A7[Repeated Context Setup]
+        A4 --> A8[Time-consuming Workflows]
+    end
+    
+    subgraph "With Infinimem Memory Agent"
+        B1[Massive Context Windows<br/>10M+ tokens active]
+        B2[Reduced Token Costs<br/>$0.14 per 1M tokens<br/>214x cost reduction]
+        B3[Persistent Memory<br/>Cross-session knowledge retention]
+        B4[Automated Context Packing<br/>AI-driven relevance ranking]
+        
+        B1 --> B5[Deep Document Understanding]
+        B2 --> B6[Cost-Effective Scaling]
+        B3 --> B7[Continuous Learning]
+        B4 --> B8[Seamless User Experience]
+    end
+    
+    subgraph "Future Trajectory"
+        C1[Context Windows Growing<br/>50M+ tokens possible]
+        C2[Costs Continuing to Drop<br/>Even more affordable]
+        C3[Memory Agent Learning<br/>Improved relevance over time]
+        
+        C1 --> C4[Enterprise-Scale Processing]
+        C2 --> C5[Mass Market Accessibility]
+        C3 --> C6[Superhuman Context Management]
+    end
+    
+    A5 --> B5
+    A6 --> B6
+    A7 --> B7
+    A8 --> B8
+    
+    B5 --> C4
+    B6 --> C5
+    B7 --> C6
+    B8 --> C6
+    
+    style A1 fill:#ffcdd2
+    style A2 fill:#ffcdd2
+    style A3 fill:#ffcdd2
+    style A4 fill:#ffcdd2
+    style A5 fill:#ff8a80
+    style A6 fill:#ff8a80
+    style A7 fill:#ff8a80
+    style A8 fill:#ff8a80
+    
+    style B1 fill:#c8e6c9
+    style B2 fill:#c8e6c9
+    style B3 fill:#c8e6c9
+    style B4 fill:#c8e6c9
+    style B5 fill:#4caf50
+    style B6 fill:#4caf50
+    style B7 fill:#4caf50
+    style B8 fill:#4caf50
+    
+    style C1 fill:#e1f5fe
+    style C2 fill:#e1f5fe
+    style C3 fill:#e1f5fe
+    style C4 fill:#2196f3
+    style C5 fill:#2196f3
+    style C6 fill:#2196f3
+    </div>
+</div>
