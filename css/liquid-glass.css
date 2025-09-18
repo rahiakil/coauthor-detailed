@@ -9377,7 +9377,251 @@ canvas {
     cursor: grabbing;
 }
 
+/* Graphics Section Styles */
+.graphics-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 1rem;
+}
+
+.svg-display {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.graphics-explanation {
+    padding: 1rem;
+}
+
+.graphics-explanation h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.memory-benefits, .limitation-analysis {
+    margin-top: 1.5rem;
+}
+
+.benefit-item, .limitation-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--primary);
+}
+
+.limitation-item.critical {
+    border-left-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.limitation-item.warning {
+    border-left-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.05);
+}
+
+.limitation-item.info {
+    border-left-color: #10b981;
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.benefit-icon, .limitation-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.benefit-content, .limitation-content {
+    flex: 1;
+}
+
+.benefit-content strong, .limitation-content strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.comparison-metrics {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.metric-item {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.metric-item.traditional {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.metric-item.infinimem {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.metric-unit {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.metric-problem {
+    font-size: 0.8rem;
+    color: #ef4444;
+}
+
+.metric-solution {
+    font-size: 0.8rem;
+    color: #10b981;
+}
+
+.metric-arrow {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.tech-implementation {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.implementation-tier {
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+}
+
+.implementation-tier.active {
+    background: rgba(16, 185, 129, 0.1);
+    border-left-color: #10b981;
+}
+
+.implementation-tier.semantic {
+    background: rgba(59, 130, 246, 0.1);
+    border-left-color: #3b82f6;
+}
+
+.implementation-tier.archive {
+    background: rgba(168, 85, 247, 0.1);
+    border-left-color: #a855f7;
+}
+
+.tier-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.tier-icon {
+    font-size: 1.3rem;
+}
+
+.tier-header h4 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.architecture-insights {
+    margin-top: 1.5rem;
+}
+
+.insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--primary);
+}
+
+.insight-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.insight-content {
+    flex: 1;
+}
+
+.insight-content strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.diagram-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.diagram-image img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
+    .graphics-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .metric-comparison {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .metric-arrow {
+        transform: rotate(90deg);
+    }
+    
     .architecture-comparison,
     .comparison-grid,
     .economics-comparison,

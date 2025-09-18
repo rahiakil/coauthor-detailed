@@ -125,6 +125,7 @@
                 <div class="nav-group">
                     <span class="nav-group-label">The New OS</span>
                     <button class="nav-tab" data-tab="operating-system">Architecture</button>
+                    <button class="nav-tab" data-tab="graphics">Graphics</button>
                 </div>
                 
                 <!-- Business Overview -->
@@ -1628,56 +1629,10 @@
     <button class="zoom-btn" onclick="zoomDiagram(this, 0.8)">🔍-</button>
     <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
 </div>
-<div class="mermaid diagram-zoomable">
-graph TD
-    subgraph "Traditional Computer System"
-        A[User Applications] --> B[System Calls]
-        B --> C[Operating System Kernel]
-        C --> D[Process Scheduler]
-        D --> E[Memory Manager]
-        E --> F[File System Manager]
-        F --> G[Device Driver Layer]
-        G --> H[Hardware Abstraction Layer]
-        H --> I[CPU Instruction Pipeline]
-        I --> J[Cache Controller]
-        J --> K[Memory Controller]
-        K --> L[Physical RAM Banks]
-        L --> M[Storage I/O Controller]
-        M --> N[Disk/SSD Hardware]
-        N --> O[Network Interface Controller]
-        O --> P[Hardware Registers]
-        
-        D -.->|Context Switch| D1[Process Context<br/>32-64 registers per task]
-        E -.->|Virtual Memory| E1[Page Table Management<br/>4KB page swapping]
-        I -.->|Pipeline Stalls| I1[Instruction Cache Misses<br/>Sequential bottlenecks]
-        J -.->|Cache Hierarchy| J1[L1/L2/L3 Cache Levels<br/>Limited by physical size]
-        K -.->|Memory Bandwidth| K1[DRAM Access Latency<br/>100+ cycle delays]
-        
-        P --> Q[Limited Context Storage<br/>No persistent reasoning state]
-    end
-    
-    style A fill:#e3f2fd
-    style B fill:#f3e5f5
-    style C fill:#fff8e1
-    style D fill:#ffebee
-    style E fill:#e8f5e8
-    style F fill:#fce4ec
-    style G fill:#f1f8e9
-    style H fill:#fff3e0
-    style I fill:#ff9999
-    style J fill:#ffcc99
-    style K fill:#c8e6c9
-    style L fill:#b39ddb
-    style M fill:#ffcdd2
-    style N fill:#dcedc8
-    style O fill:#f8bbd9
-    style P fill:#81c784
-    style Q fill:#ffab91
-    style D1 fill:#ffcf9e
-    style E1 fill:#ffcf9e
-    style I1 fill:#ffcf9e
-    style J1 fill:#ffcf9e
-    style K1 fill:#ffcf9e
+<div class="diagram-image">
+    <img src="images/diagrams/traditional.png" 
+         alt="Traditional Computer System Architecture" 
+         style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
 </div>
                     </div>
                     
@@ -1689,51 +1644,10 @@ graph TD
         <button class="zoom-btn" onclick="zoomDiagram(this, 0.8)">🔍-</button>
         <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
     </div>
-    <div class="mermaid diagram-zoomable">
-graph TD
-    subgraph "Infinimem Operating System"
-        A[User Intent & Context] --> B[Reasoning Orchestrator]
-        B --> C[Memory Agent<br/>🤖 Intelligent Context Manager]
-        C --> D[Context Window Manager<br/>64K-200K tokens active (1M max)]
-        D --> E[L1 Cache Layer<br/>800-1000 token chunks]
-        E --> F[L2 Cache Layer<br/>300-500 token summaries]
-        F --> G[L3 Cache Layer<br/>100-200 token chunks]
-        G --> H[RAM Layer<br/>Long-term vector storage per collection]
-        H --> I[SSD External Memory<br/>Full vector DB/BM25 index + Memory Manager Agent]
-        I --> J[Hierarchical Context Packing<br/>Most important = closest to model]
-        J --> K[Dynamic Token Allocation<br/>Adaptive context sizing]
-        K --> L[Multi-Modal Processing<br/>Text, code, documents, images]
-        L --> M[Agent Orchestration Layer<br/>Specialized reasoning agents]
-        M --> N[Output Generation<br/>Context-aware responses]
-        
-        C -.->|Learns & Reasons| C1[Previous Context Analysis<br/>Pattern recognition from history]
-        E -.->|Smart Caching| E1[Fast Access Chunks<br/>800-1000 tokens per chunk]
-        F -.->|Summary Cache| F1[Compressed Context<br/>300-500 token summaries]
-        G -.->|Micro Cache| G1[Essential Context<br/>100-200 token chunks]
-        H -.->|Vector Storage| H1[Collection-based Memory<br/>Long-term knowledge retention]
-        I -.->|Full Memory| I1[Complete Knowledge Base<br/>Vector DB + BM25 search index]
-        J -.->|Priority Queue| J1[Distance-based Importance<br/>Critical context stays closest]
-        K -.->|Cost Optimization| K1[Token Economics<br/>Cost per token ↓ 214x]
-        L -.->|Context Expansion| L1[Larger Windows<br/>10M → 50M+ tokens possible]
-        
-        N --> O[Enhanced Output Quality<br/>Rich contextual understanding]
-    end
-    
-    style A fill:#e3f2fd
-    style B fill:#81c784
-    style C fill:#4caf50
-    style D fill:#2196f3
-    style E fill:#9c27b0
-    style F fill:#ff9800
-    style G fill:#f44336
-    style H fill:#795548
-    style I fill:#607d8b
-    style J fill:#00bcd4
-    style K fill:#8bc34a
-    style L fill:#ffc107
-    style M fill:#e91e63
-    style N fill:#3f51b5
-    style O fill:#4caf50
+    <div class="diagram-image">
+        <img src="images/diagrams/infinimem-arch.png" 
+             alt="Infinimem Operating System Architecture" 
+             style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
     </div>
                     </div>
                     
@@ -1950,153 +1864,11 @@ graph TD
         <button class="zoom-btn" onclick="zoomDiagram(this, 0.8)">🔍-</button>
         <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
     </div>
-    <div class="mermaid diagram-zoomable">
-graph LR
-    subgraph "Current Limitations"
-        A1[Small Context Windows<br/>200K tokens max]
-        A2[High Token Costs<br/>$30 per 1M tokens]
-        A3[Context Loss<br/>No memory between sessions]
-        A4[Manual Context Management<br/>Human intervention required]
-        
-        A1 --> A5[Limited Understanding]
-        A2 --> A6[Expensive Operations]
-        A3 --> A7[Repeated Context Setup]
-        A4 --> A8[Time-consuming Workflows]
-    end
-    
-    subgraph "With Infinimem Memory Agent"
-        B1[Massive Context Windows<br/>10M+ tokens active]
-        B2[Reduced Token Costs<br/>$0.14 per 1M tokens<br/>214x cost reduction]
-        B3[Persistent Memory<br/>Cross-session knowledge retention]
-        B4[Automated Context Packing<br/>AI-driven relevance ranking]
-        
-        B1 --> B5[Deep Document Understanding]
-        B2 --> B6[Cost-Effective Scaling]
-        B3 --> B7[Continuous Learning]
-        B4 --> B8[Seamless User Experience]
-    end
-    
-    subgraph "Future Trajectory"
-        C1[Context Windows Growing<br/>50M+ tokens possible]
-        C2[Costs Continuing to Drop<br/>Even more affordable]
-        C3[Memory Agent Learning<br/>Improved relevance over time]
-        
-        C1 --> C4[Enterprise-Scale Processing]
-        C2 --> C5[Mass Market Accessibility]
-        C3 --> C6[Superhuman Context Management]
-    end
-    
-    A5 --> B5
-    A6 --> B6
-    A7 --> B7
-    A8 --> B8
-    
-    B5 --> C4
-    B6 --> C5
-    B7 --> C6
-    B8 --> C6
-    
-    style A1 fill:#ffcdd2
-    style A2 fill:#ffcdd2
-    style A3 fill:#ffcdd2
-    style A4 fill:#ffcdd2
-    style A5 fill:#ff8a80
-    style A6 fill:#ff8a80
-    style A7 fill:#ff8a80
-    style A8 fill:#ff8a80
-    
-    style B1 fill:#c8e6c9
-    style B2 fill:#c8e6c9
-    style B3 fill:#c8e6c9
-    style B4 fill:#c8e6c9
-    style B5 fill:#4caf50
-    style B6 fill:#4caf50
-    style B7 fill:#4caf50
-    style B8 fill:#4caf50
-    
-    style C1 fill:#e1f5fe
-    style C2 fill:#e1f5fe
-    style C3 fill:#e1f5fe
-    style C4 fill:#2196f3
-    style C5 fill:#2196f3
-    style C6 fill:#2196f3
+    <div class="diagram-image">
+        <img src="images/diagrams/cost-advantages.png" 
+             alt="Cost Advantages and Context Expansion" 
+             style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
     </div>
-                    </div>
-                    
-                    <!-- Graphics: Memory Packing Visualization -->
-                    <div class="glass-card full-width">
-                        <h3 class="card-title">🎨 Graphics: LLM Memory Intelligence vs Physical Packing</h3>
-                        <div style="margin-bottom: 20px;">
-                            <p style="font-size: 1.1em; line-height: 1.6; color: var(--text-secondary);">
-                                LLM memory management is fundamentally different from traditional computing. While physical systems pack data by size and type, 
-                                LLM systems must pack by <strong>semantic relevance</strong> and <strong>contextual importance</strong>. This requires 
-                                intelligent agents that understand meaning, not just bytes.
-                            </p>
-                        </div>
-                        
-                        <div style="text-align: center; margin: 30px 0;">
-                            <img src="images/diagrams/llm_memory_packing_comparison.svg" 
-                                 alt="Memory Packing: Physical vs LLM Intelligence Comparison" 
-                                 style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-                        </div>
-                        
-                        <div style="margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
-                            <h4 style="margin-bottom: 15px; color: var(--primary);">🧠 Why LLM Memory Intelligence Matters for Agents</h4>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; font-size: 0.95em;">
-                                <div>
-                                    <h5 style="color: #ff6b6b; margin-bottom: 10px;">🏗️ Traditional Physical Packing</h5>
-                                    <ul style="line-height: 1.6; color: var(--text-secondary);">
-                                        <li><strong>Size-based allocation:</strong> Largest items first, fill remaining space</li>
-                                        <li><strong>Type organization:</strong> Group similar data types together</li>
-                                        <li><strong>Sequential access:</strong> Optimized for linear read/write patterns</li>
-                                        <li><strong>Memory efficiency:</strong> Minimize wasted space and fragmentation</li>
-                                        <li><strong>Hardware constraints:</strong> Limited by physical memory boundaries</li>
-                                    </ul>
-                                </div>
-                                
-                                <div>
-                                    <h5 style="color: #4ecdc4; margin-bottom: 10px;">🤖 LLM Intelligent Memory Packing</h5>
-                                    <ul style="line-height: 1.6; color: var(--text-secondary);">
-                                        <li><strong>Relevance-based allocation:</strong> Most important context closest to model</li>
-                                        <li><strong>Semantic clustering:</strong> Group related concepts and knowledge</li>
-                                        <li><strong>Dynamic prioritization:</strong> Context importance changes with task</li>
-                                        <li><strong>Meaning preservation:</strong> Maintain narrative and logical coherence</li>
-                                        <li><strong>Adaptive boundaries:</strong> Context windows that expand based on need</li>
-                                    </ul>
-                                </div>
-                                
-                                <div>
-                                    <h5 style="color: #45b7d1; margin-bottom: 10px;">⚡ Agent Performance Impact</h5>
-                                    <ul style="line-height: 1.6; color: var(--text-secondary);">
-                                        <li><strong>Context coherence:</strong> Agents maintain logical reasoning chains</li>
-                                        <li><strong>Task continuity:</strong> Memory persists across long conversations</li>
-                                        <li><strong>Knowledge synthesis:</strong> Connect information from multiple sources</li>
-                                        <li><strong>Adaptive learning:</strong> Improve responses based on context history</li>
-                                        <li><strong>Cost optimization:</strong> Intelligent token usage reduces expenses</li>
-                                    </ul>
-                                </div>
-                                
-                                <div>
-                                    <h5 style="color: #96ceb4; margin-bottom: 10px;">🎯 Infinimem's Advantage</h5>
-                                    <ul style="line-height: 1.6; color: var(--text-secondary);">
-                                        <li><strong>Memory Agent orchestration:</strong> AI manages context intelligently</li>
-                                        <li><strong>Multi-tier architecture:</strong> Active, semantic, and archive layers</li>
-                                        <li><strong>Dynamic compression:</strong> Summarize less important information</li>
-                                        <li><strong>Hierarchical relevance:</strong> Distance-based importance ranking</li>
-                                        <li><strong>10M+ token capacity:</strong> 50x larger context than competitors</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 20px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 4px solid #10B981;">
-                            <h4 style="color: #10B981; margin-bottom: 10px;">💡 Key Insight: Agents Need Intelligent Memory, Not Just Storage</h4>
-                            <p style="margin: 0; font-size: 0.95em; line-height: 1.5;">
-                                Traditional memory systems optimize for <strong>space efficiency</strong>. LLM systems must optimize for <strong>meaning efficiency</strong>. 
-                                Our Memory Agent doesn't just store information—it curates, prioritizes, and presents context in the most meaningful way possible. 
-                                This is why our agents can maintain coherent reasoning across massive documents while competitors struggle with basic context retention.
-                            </p>
-                        </div>
                     </div>
                     
                     <!-- Token Economics -->
@@ -2990,6 +2762,178 @@ graph TD
                                 <div class="metric-label">Rule Coverage</div>
                                 <div class="metric-value">89%</div>
                                 <div class="metric-comparison">story elements</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-content" id="graphics">
+                <div class="content-grid">
+                    <div class="glass-card full-width">
+                        <h2 class="section-title"><i class="fas fa-chart-bar"></i> Graphics: LLM Memory Intelligence</h2>
+                        <p>Visual representations of how Infinimem's revolutionary memory architecture overcomes fundamental limitations in current AI systems, enabling true long-context intelligence.</p>
+                    </div>
+
+                    <!-- AI Agent Architecture -->
+                    <div class="glass-card full-width">
+                        <h3 class="card-title"><i class="fas fa-robot"></i> AI Agent Architecture: Dynamic Computing with Memory Challenges</h3>
+                        <div class="graphics-container">
+                            <div class="svg-display" style="grid-column: 1 / -1;">
+                                <img src="images/diagrams/ai_agent_architecture.svg" 
+                                     alt="AI Agent Architecture" 
+                                     style="width: 100%; height: auto; max-height: 600px; object-fit: contain;">
+                            </div>
+                        </div>
+                        <div class="graphics-explanation">
+                            <h4>AI Agents: The New Computing Paradigm</h4>
+                            <p>This architecture diagram reveals how AI agents represent a fundamental shift in computing - from static processors to dynamic reasoning engines. Understanding this paradigm is crucial for appreciating why memory management becomes the critical bottleneck.</p>
+                            
+                            <div class="architecture-insights">
+                                <div class="insight-item">
+                                    <span class="insight-icon">🤖</span>
+                                    <div class="insight-content">
+                                        <strong>LLM as Dynamic CPU:</strong> Unlike traditional CPUs with fixed instruction sets, LLMs generate instructions dynamically based on context, enabling unprecedented flexibility in problem-solving approaches.
+                                    </div>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-icon">🔧</span>
+                                    <div class="insight-content">
+                                        <strong>Tools as Smart Peripherals:</strong> Tools function like intelligent peripherals, providing specialized capabilities (search, file operations, APIs) that extend the agent's reach into external systems.
+                                    </div>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-icon">🧠</span>
+                                    <div class="insight-content">
+                                        <strong>Memory as the Bottleneck:</strong> While traditional computers have persistent RAM and storage, AI agents face critical memory limitations: context overflow, session amnesia, and tool state loss.
+                                    </div>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-icon">⚡</span>
+                                    <div class="insight-content">
+                                        <strong>Infinimem's Revolutionary Solution:</strong> Our 10M+ token context and intelligent memory architecture transforms this limitation into a competitive advantage, enabling agents to maintain context across complex, multi-step workflows.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LLM Memory Packing Comparison -->
+                    <div class="glass-card full-width">
+                        <h3 class="card-title"><i class="fas fa-brain"></i> Memory Packing: Physical vs LLM Intelligence</h3>
+                        <div class="graphics-container">
+                            <div class="svg-display">
+                                <img src="images/diagrams/llm_memory_packing_comparison.svg" 
+                                     alt="LLM Memory Packing Comparison" 
+                                     style="width: 100%; height: auto; max-height: 500px; object-fit: contain;">
+                            </div>
+                            <div class="graphics-explanation">
+                                <h4>Why LLM Memory Intelligence Matters for Agents</h4>
+                                <p>Traditional physical memory systems store data linearly and retrieve it sequentially. LLM memory intelligence revolutionizes this approach by understanding semantic relationships, context relevance, and information hierarchies.</p>
+                                
+                                <div class="memory-benefits">
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🧠</span>
+                                        <div class="benefit-content">
+                                            <strong>Semantic Understanding:</strong> Unlike physical memory that treats all data equally, LLM memory comprehends meaning, context, and relationships between information pieces.
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">⚡</span>
+                                        <div class="benefit-content">
+                                            <strong>Intelligent Prioritization:</strong> Infinimem's memory agents automatically prioritize relevant information, keeping critical context in active memory while archiving less relevant data.
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🔗</span>
+                                        <div class="benefit-content">
+                                            <strong>Contextual Connections:</strong> Our 3-tier memory architecture (Active → Semantic → Archive) maintains contextual relationships across 10M+ tokens, enabling agents to work with unprecedented context depth.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Context Window Limitations -->
+                    <div class="glass-card full-width">
+                        <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> The Context Window: LLM's Limited Universe</h3>
+                        <div class="graphics-container">
+                            <div class="svg-display">
+                                <img src="images/diagrams/llm_context_window_limitation.svg" 
+                                     alt="LLM Context Window Limitations" 
+                                     style="width: 100%; height: auto; max-height: 500px; object-fit: contain;">
+                            </div>
+                            <div class="graphics-explanation">
+                                <h4>Agentic Model Limitations When LLMs Need to Be Called</h4>
+                                <p>Current AI agents face critical bottlenecks when their context windows reach capacity. This diagram illustrates how traditional LLMs create decision-making constraints that break agentic workflows.</p>
+                                
+                                <div class="limitation-analysis">
+                                    <div class="limitation-item critical">
+                                        <span class="limitation-icon">🚫</span>
+                                        <div class="limitation-content">
+                                            <strong>Context Truncation Crisis:</strong> When agents hit the 200K token limit, they lose critical context, leading to inconsistent decisions and broken reasoning chains.
+                                        </div>
+                                    </div>
+                                    <div class="limitation-item warning">
+                                        <span class="limitation-icon">⏱️</span>
+                                        <div class="limitation-content">
+                                            <strong>Frequent API Calls:</strong> Agents must repeatedly call LLM APIs to process information that exceeds context limits, creating latency bottlenecks and increased costs.
+                                        </div>
+                                    </div>
+                                    <div class="limitation-item info">
+                                        <span class="limitation-icon">💡</span>
+                                        <div class="limitation-content">
+                                            <strong>Infinimem's Solution:</strong> Our 10M+ token context eliminates these bottlenecks, allowing agents to maintain full context awareness throughout complex, multi-document workflows.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="comparison-metrics">
+                                    <div class="metric-comparison">
+                                        <div class="metric-item traditional">
+                                            <div class="metric-label">Traditional LLMs</div>
+                                            <div class="metric-value">200K</div>
+                                            <div class="metric-unit">tokens max</div>
+                                            <div class="metric-problem">Context loss every 400 pages</div>
+                                        </div>
+                                        <div class="metric-arrow">→</div>
+                                        <div class="metric-item infinimem">
+                                            <div class="metric-label">Infinimem</div>
+                                            <div class="metric-value">10M+</div>
+                                            <div class="metric-unit">tokens active</div>
+                                            <div class="metric-solution">Continuous context across 20,000+ pages</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Implementation -->
+                    <div class="glass-card">
+                        <h3 class="card-title"><i class="fas fa-cogs"></i> Technical Implementation: Memory Architecture</h3>
+                        <div class="tech-implementation">
+                            <div class="implementation-tier active">
+                                <div class="tier-header">
+                                    <span class="tier-icon">🚀</span>
+                                    <h4>Active Memory (200K tokens)</h4>
+                                </div>
+                                <p>Immediate working context for real-time agent decisions and reasoning</p>
+                            </div>
+                            <div class="implementation-tier semantic">
+                                <div class="tier-header">
+                                    <span class="tier-icon">🧠</span>
+                                    <h4>Semantic Memory (2M tokens)</h4>
+                                </div>
+                                <p>Contextually relevant information with semantic relationships and priority ranking</p>
+                            </div>
+                            <div class="implementation-tier archive">
+                                <div class="tier-header">
+                                    <span class="tier-icon">📚</span>
+                                    <h4>Archive Memory (10M+ tokens)</h4>
+                                </div>
+                                <p>Complete historical context with intelligent retrieval and relationship mapping</p>
                             </div>
                         </div>
                     </div>

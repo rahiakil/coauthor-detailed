@@ -1,0 +1,384 @@
+<svg width="1400" height="900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1400" height="900" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="700" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#2c3e50">
+    The Context Window: LLM's Limited Universe
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="700" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#7f8c8d">
+    Everything outside the context window is invisible to the transformer
+  </text>
+  
+  <!-- Context Window Border (the "universe") -->
+  <rect x="200" y="120" width="1000" height="700" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="10,5"/>
+  <text x="700" y="110" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#e74c3c">
+    CONTEXT WINDOW (e.g., 8,192 tokens)
+  </text>
+  
+  <!-- Information flow from outside -->
+  <g transform="translate(50, 200)">
+    <!-- Massive data outside the window -->
+    <rect x="0" y="0" width="120" height="400" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" rx="5"/>
+    <text x="60" y="20" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#2c3e50">
+      VAST DATA
+    </text>
+    <text x="60" y="35" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">
+      Internet
+    </text>
+    <text x="60" y="50" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">
+      Documents
+    </text>
+    <text x="60" y="65" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">
+      Conversations
+    </text>
+    <text x="60" y="80" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">
+      Knowledge
+    </text>
+    
+    <!-- Visual representation of data -->
+    <rect x="10" y="100" width="100" height="3" fill="#3498db"/>
+    <rect x="10" y="110" width="80" height="3" fill="#e74c3c"/>
+    <rect x="10" y="120" width="90" height="3" fill="#27ae60"/>
+    <rect x="10" y="130" width="70" height="3" fill="#f39c12"/>
+    <rect x="10" y="140" width="95" height="3" fill="#9b59b6"/>
+    <rect x="10" y="150" width="60" height="3" fill="#1abc9c"/>
+    <rect x="10" y="160" width="85" height="3" fill="#e67e22"/>
+    
+    <!-- Many more data lines -->
+    <g opacity="0.7">
+      <rect x="10" y="180" width="75" height="2" fill="#95a5a6"/>
+      <rect x="10" y="185" width="90" height="2" fill="#95a5a6"/>
+      <rect x="10" y="190" width="65" height="2" fill="#95a5a6"/>
+      <rect x="10" y="195" width="85" height="2" fill="#95a5a6"/>
+      <rect x="10" y="200" width="70" height="2" fill="#95a5a6"/>
+      <rect x="10" y="205" width="80" height="2" fill="#95a5a6"/>
+      <rect x="10" y="210" width="90" height="2" fill="#95a5a6"/>
+      <rect x="10" y="215" width="60" height="2" fill="#95a5a6"/>
+      <rect x="10" y="220" width="95" height="2" fill="#95a5a6"/>
+      <rect x="10" y="225" width="75" height="2" fill="#95a5a6"/>
+      <!-- Continue pattern -->
+      <rect x="10" y="240" width="80" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="245" width="70" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="250" width="85" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="255" width="90" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="260" width="65" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="265" width="75" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="270" width="80" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="275" width="95" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="280" width="70" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="285" width="85" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="290" width="60" height="1" fill="#bdc3c7"/>
+      <rect x="10" y="295" width="90" height="1" fill="#bdc3c7"/>
+    </g>
+    
+    <!-- Arrow showing data flow -->
+    <path d="M 130 200 L 180 200" stroke="#2c3e50" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+    <text x="155" y="190" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">
+      Input Stream
+    </text>
+  </g>
+  
+  <!-- The Context Window cutoff -->
+  <g transform="translate(200, 150)">
+    <!-- Token slots in context window -->
+    <text x="500" y="20" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">
+      TRANSFORMER'S VISIBLE UNIVERSE
+    </text>
+    
+    <!-- Token sequence visualization -->
+    <g transform="translate(0, 40)">
+      <!-- Visible tokens -->
+      <rect x="0" y="0" width="50" height="30" fill="#27ae60" stroke="#1e8449" stroke-width="1" rx="3"/>
+      <text x="25" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">T₁</text>
+      
+      <rect x="55" y="0" width="50" height="30" fill="#27ae60" stroke="#1e8449" stroke-width="1" rx="3"/>
+      <text x="80" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">T₂</text>
+      
+      <rect x="110" y="0" width="50" height="30" fill="#27ae60" stroke="#1e8449" stroke-width="1" rx="3"/>
+      <text x="135" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">T₃</text>
+      
+      <rect x="165" y="0" width="50" height="30" fill="#27ae60" stroke="#1e8449" stroke-width="1" rx="3"/>
+      <text x="190" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">T₄</text>
+      
+      <text x="240" y="20" font-family="Arial" font-size="14" fill="#2c3e50">...</text>
+      
+      <!-- More tokens -->
+      <rect x="280" y="0" width="50" height="30" fill="#27ae60" stroke="#1e8449" stroke-width="1" rx="3"/>
+      <text x="305" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">Tₙ₋₂</text>
+      
+      <rect x="335" y="0" width="50" height="30" fill="#27ae60" stroke="#1e8449" stroke-width="1" rx="3"/>
+      <text x="360" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">Tₙ₋₁</text>
+      
+      <rect x="390" y="0" width="50" height="30" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="3"/>
+      <text x="415" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">Tₙ</text>
+      <text x="415" y="50" text-anchor="middle" font-family="Arial" font-size="8" fill="#3498db">Current</text>
+      
+      <!-- Cutoff line -->
+      <line x1="450" y1="-10" x2="450" y2="60" stroke="#e74c3c" stroke-width="4"/>
+      <text x="470" y="25" font-family="Arial" font-size="12" font-weight="bold" fill="#e74c3c">
+        CUTOFF
+      </text>
+      
+      <!-- Invisible/truncated tokens -->
+      <rect x="480" y="0" width="50" height="30" fill="#95a5a6" stroke="#7f8c8d" stroke-width="1" rx="3" opacity="0.3"/>
+      <text x="505" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d" opacity="0.5">T₁₀₀₁</text>
+      <text x="505" y="50" text-anchor="middle" font-family="Arial" font-size="8" fill="#e74c3c">INVISIBLE</text>
+      
+      <rect x="535" y="0" width="50" height="30" fill="#95a5a6" stroke="#7f8c8d" stroke-width="1" rx="3" opacity="0.3"/>
+      <text x="560" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d" opacity="0.5">T₁₀₀₂</text>
+      <text x="560" y="50" text-anchor="middle" font-family="Arial" font-size="8" fill="#e74c3c">INVISIBLE</text>
+      
+      <!-- X marks over invisible tokens -->
+      <path d="M 485 5 L 525 25 M 525 5 L 485 25" stroke="#e74c3c" stroke-width="2"/>
+      <path d="M 540 5 L 580 25 M 580 5 L 540 25" stroke="#e74c3c" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Transformer Architecture -->
+  <g transform="translate(250, 250)">
+    <!-- Multi-Head Attention -->
+    <rect x="0" y="0" width="300" height="80" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="10"/>
+    <text x="150" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="white">
+      Multi-Head Attention
+    </text>
+    <text x="150" y="45" text-anchor="middle" font-family="Arial" font-size="12" fill="#ecf0f1">
+      Can only attend to tokens in context window
+    </text>
+    <text x="150" y="65" text-anchor="middle" font-family="Arial" font-size="10" fill="#d6eaf8">
+      Q·K^T / √d_k mechanism limited to visible tokens
+    </text>
+    
+    <!-- Attention connections within window -->
+    <g transform="translate(50, 90)">
+      <!-- Attention heads -->
+      <circle cx="50" cy="20" r="8" fill="#f39c12"/>
+      <text x="50" y="25" text-anchor="middle" font-family="Arial" font-size="8" fill="white">H₁</text>
+      
+      <circle cx="100" cy="20" r="8" fill="#e74c3c"/>
+      <text x="100" y="25" text-anchor="middle" font-family="Arial" font-size="8" fill="white">H₂</text>
+      
+      <circle cx="150" cy="20" r="8" fill="#9b59b6"/>
+      <text x="150" y="25" text-anchor="middle" font-family="Arial" font-size="8" fill="white">H₃</text>
+      
+      <circle cx="200" cy="20" r="8" fill="#27ae60"/>
+      <text x="200" y="25" text-anchor="middle" font-family="Arial" font-size="8" fill="white">H₄</text>
+      
+      <!-- Attention lines between heads -->
+      <path d="M 50 28 Q 75 40 100 28" stroke="#f39c12" stroke-width="1" fill="none"/>
+      <path d="M 100 28 Q 125 40 150 28" stroke="#e74c3c" stroke-width="1" fill="none"/>
+      <path d="M 150 28 Q 175 40 200 28" stroke="#9b59b6" stroke-width="1" fill="none"/>
+      <path d="M 50 28 Q 100 50 150 28" stroke="#27ae60" stroke-width="1" fill="none"/>
+    </g>
+    
+    <!-- Feed Forward Network -->
+    <rect x="0" y="160" width="300" height="60" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="10"/>
+    <text x="150" y="185" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="white">
+      Feed Forward Network
+    </text>
+    <text x="150" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#fdeaa7">
+      Processes each position independently
+    </text>
+    
+    <!-- Layer Norm -->
+    <rect x="320" y="0" width="80" height="80" fill="#1abc9c" stroke="#16a085" stroke-width="2" rx="10"/>
+    <text x="360" y="30" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">
+      Layer
+    </text>
+    <text x="360" y="45" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">
+      Norm
+    </text>
+    <text x="360" y="65" text-anchor="middle" font-family="Arial" font-size="10" fill="#a3e4d7">
+      + Residual
+    </text>
+    
+    <rect x="320" y="160" width="80" height="60" fill="#1abc9c" stroke="#16a085" stroke-width="2" rx="10"/>
+    <text x="360" y="185" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">
+      Layer
+    </text>
+    <text x="360" y="205" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">
+      Norm
+    </text>
+    
+    <!-- Arrows between components -->
+    <path d="M 150 80 L 150 160" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path d="M 300 40 L 320 40" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path d="M 300 190 L 320 190" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Stack indicator -->
+    <text x="450" y="120" font-family="Arial" font-size="12" fill="#7f8c8d">
+      ×12 layers
+    </text>
+    <text x="450" y="135" font-family="Arial" font-size="10" fill="#7f8c8d">
+      (GPT-3 style)
+    </text>
+  </g>
+  
+  <!-- Output -->
+  <g transform="translate(250, 550)">
+    <rect x="0" y="0" width="300" height="60" fill="#8e44ad" stroke="#7d3c98" stroke-width="2" rx="10"/>
+    <text x="150" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="white">
+      Output Layer
+    </text>
+    <text x="150" y="45" text-anchor="middle" font-family="Arial" font-size="12" fill="#d7bde2">
+      Next token prediction based only on context window
+    </text>
+    
+    <!-- Arrow to output -->
+    <path d="M 400 470 L 150 550" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Information loss visualization -->
+  <g transform="translate(700, 250)">
+    <rect x="0" y="0" width="250" height="200" fill="#ffebee" stroke="#e74c3c" stroke-width="2" rx="10"/>
+    <text x="125" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#e74c3c">
+      INFORMATION AMNESIA
+    </text>
+    
+    <!-- Lost information -->
+    <text x="125" y="50" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">
+      What the LLM CANNOT access:
+    </text>
+    
+    <text x="20" y="75" font-family="Arial" font-size="11" fill="#e74c3c">
+      • Earlier conversation history
+    </text>
+    <text x="20" y="95" font-family="Arial" font-size="11" fill="#e74c3c">
+      • Previous documents
+    </text>
+    <text x="20" y="115" font-family="Arial" font-size="11" fill="#e74c3c">
+      • External knowledge bases
+    </text>
+    <text x="20" y="135" font-family="Arial" font-size="11" fill="#e74c3c">
+      • Real-time information
+    </text>
+    <text x="20" y="155" font-family="Arial" font-size="11" fill="#e74c3c">
+      • Memory from other sessions
+    </text>
+    <text x="20" y="175" font-family="Arial" font-size="11" fill="#e74c3c">
+      • Anything beyond token limit
+    </text>
+    
+    <!-- Visual representation of cutoff -->
+    <path d="M 30 50 L 220 50" stroke="#e74c3c" stroke-width="2"/>
+    <text x="125" y="45" text-anchor="middle" font-family="Arial" font-size="10" fill="#e74c3c">
+      HARD BOUNDARY
+    </text>
+  </g>
+  
+  <!-- Context window stats -->
+  <g transform="translate(700, 480)">
+    <rect x="0" y="0" width="250" height="120" fill="#e8f6f3" stroke="#27ae60" stroke-width="2" rx="10"/>
+    <text x="125" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#27ae60">
+      CONTEXT WINDOW LIMITS
+    </text>
+    
+    <text x="20" y="50" font-family="Arial" font-size="11" fill="#2c3e50">
+      📏 GPT-3: 4,096 tokens (~3K words)
+    </text>
+    <text x="20" y="67" font-family="Arial" font-size="11" fill="#2c3e50">
+      📏 GPT-4: 8,192 tokens (~6K words)
+    </text>
+    <text x="20" y="84" font-family="Arial" font-size="11" fill="#2c3e50">
+      📏 Claude: 200K tokens (~150K words)
+    </text>
+    <text x="20" y="101" font-family="Arial" font-size="11" fill="#27ae60">
+      ⚡ Everything else = INVISIBLE
+    </text>
+  </g>
+  
+  <!-- Key insight -->
+  <g transform="translate(200, 650)">
+    <rect x="0" y="0" width="800" height="80" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="10"/>
+    <text x="400" y="25" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#856404">
+      🔑 KEY INSIGHT: The LLM's "Universe" is ONLY the Context Window
+    </text>
+    <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="12" fill="#856404">
+      Unlike humans who have long-term memory, the transformer has NO memory
+    </text>
+    <text x="400" y="62" text-anchor="middle" font-family="Arial" font-size="12" fill="#856404">
+      beyond what fits in its current context window. Everything else simply doesn't exist.
+    </text>
+  </g>
+  
+  <!-- Attention heatmap visualization -->
+  <g transform="translate(1000, 250)">
+    <text x="150" y="20" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">
+      Attention Matrix
+    </text>
+    <text x="150" y="38" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">
+      (Only within context window)
+    </text>
+    
+    <!-- Attention matrix grid -->
+    <g transform="translate(50, 50)">
+      <!-- Grid of attention scores -->
+      <rect x="0" y="0" width="20" height="20" fill="#e74c3c" opacity="0.8"/>
+      <rect x="20" y="0" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      <rect x="40" y="0" width="20" height="20" fill="#f1c40f" opacity="0.4"/>
+      <rect x="60" y="0" width="20" height="20" fill="#27ae60" opacity="0.3"/>
+      <rect x="80" y="0" width="20" height="20" fill="#3498db" opacity="0.2"/>
+      
+      <rect x="0" y="20" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      <rect x="20" y="20" width="20" height="20" fill="#e74c3c" opacity="0.8"/>
+      <rect x="40" y="20" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      <rect x="60" y="20" width="20" height="20" fill="#f1c40f" opacity="0.4"/>
+      <rect x="80" y="20" width="20" height="20" fill="#27ae60" opacity="0.3"/>
+      
+      <rect x="0" y="40" width="20" height="20" fill="#f1c40f" opacity="0.4"/>
+      <rect x="20" y="40" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      <rect x="40" y="40" width="20" height="20" fill="#e74c3c" opacity="0.8"/>
+      <rect x="60" y="40" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      <rect x="80" y="40" width="20" height="20" fill="#f1c40f" opacity="0.4"/>
+      
+      <rect x="0" y="60" width="20" height="20" fill="#27ae60" opacity="0.3"/>
+      <rect x="20" y="60" width="20" height="20" fill="#f1c40f" opacity="0.4"/>
+      <rect x="40" y="60" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      <rect x="60" y="60" width="20" height="20" fill="#e74c3c" opacity="0.8"/>
+      <rect x="80" y="60" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      
+      <rect x="0" y="80" width="20" height="20" fill="#3498db" opacity="0.2"/>
+      <rect x="20" y="80" width="20" height="20" fill="#27ae60" opacity="0.3"/>
+      <rect x="40" y="80" width="20" height="20" fill="#f1c40f" opacity="0.4"/>
+      <rect x="60" y="80" width="20" height="20" fill="#f39c12" opacity="0.6"/>
+      <rect x="80" y="80" width="20" height="20" fill="#e74c3c" opacity="0.8"/>
+      
+      <!-- Grid lines -->
+      <g stroke="#2c3e50" stroke-width="0.5" opacity="0.3">
+        <line x1="0" y1="0" x2="100" y2="0"/>
+        <line x1="0" y1="20" x2="100" y2="20"/>
+        <line x1="0" y1="40" x2="100" y2="40"/>
+        <line x1="0" y1="60" x2="100" y2="60"/>
+        <line x1="0" y1="80" x2="100" y2="80"/>
+        <line x1="0" y1="100" x2="100" y2="100"/>
+        
+        <line x1="0" y1="0" x2="0" y2="100"/>
+        <line x1="20" y1="0" x2="20" y2="100"/>
+        <line x1="40" y1="0" x2="40" y2="100"/>
+        <line x1="60" y1="0" x2="60" y2="100"/>
+        <line x1="80" y1="0" x2="80" y2="100"/>
+        <line x1="100" y1="0" x2="100" y2="100"/>
+      </g>
+    </g>
+    
+    <!-- Legend -->
+    <text x="50" y="180" font-family="Arial" font-size="10" fill="#2c3e50">High attention</text>
+    <rect x="130" y="172" width="15" height="10" fill="#e74c3c" opacity="0.8"/>
+    <text x="150" y="180" font-family="Arial" font-size="10" fill="#2c3e50">Low attention</text>
+    <rect x="215" y="172" width="15" height="10" fill="#3498db" opacity="0.2"/>
+  </g>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+  </defs>
+  
+  <!-- Bottom summary -->
+  <text x="700" y="870" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d">
+    The transformer architecture creates a perfect "tunnel vision" - it can only see and process what's in its context window 🔍
+  </text>
+</svg>

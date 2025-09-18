@@ -1,28 +1,29 @@
-graph TD
-    subgraph "Traditional Computer System"
-        A[User Applications] --> B[System Calls]
-        B --> C[Operating System Kernel]
-        C --> D[Process Scheduler]
-        D --> E[Memory Manager]
-        E --> F[File System Manager]
-        F --> G[Device Driver Layer]
-        G --> H[Hardware Abstraction Layer]
-        H --> I[CPU Instruction Pipeline]
-        I --> J[Cache Controller]
-        J --> K[Memory Controller]
-        K --> L[Physical RAM Banks]
-        L --> M[Storage I/O Controller]
-        M --> N[Disk/SSD Hardware]
-        N --> O[Network Interface Controller]
-        O --> P[Hardware Registers]
+graph TB
+    subgraph "Traditional Computer System - Vertical Architecture"
+        A[User Applications<br/>Limited 200K Token Context]
+        A -->|System Calls| B[Operating System Kernel<br/>Context Switch Overhead]
+        B -->|Process Management| C[Process Scheduler<br/>32-64 registers per task]
+        C -->|Memory Allocation| D[Memory Manager<br/>Virtual Memory with 4KB pages]
+        D -->|File Operations| E[File System Manager<br/>Sequential I/O bottlenecks]
+        E -->|Hardware Interface| F[Device Driver Layer<br/>Hardware abstraction barriers]
+        F -->|Low-level Access| G[Hardware Abstraction Layer<br/>Limited parallel processing]
+        G -->|Instruction Processing| H[CPU Instruction Pipeline<br/>Sequential instruction execution]
+        H -->|Cache Management| I[Cache Controller<br/>L1/L2/L3 hierarchy limitations]
+        I -->|Memory Access| J[Memory Controller<br/>DRAM 100+ cycle latency]
+        J -->|Physical Storage| K[Physical RAM Banks<br/>Limited by physical constraints]
+        K -->|Persistent Storage| L[Storage I/O Controller<br/>Disk access bottlenecks]
+        L -->|Hardware Storage| M[Disk/SSD Hardware<br/>Mechanical/electrical limits]
+        M -->|Network Access| N[Network Interface Controller<br/>Packet-based communication]
+        N -->|Register Level| O[Hardware Registers<br/>Finite state storage]
+        O -->|Final Limitation| P[Limited Context Storage<br/>No persistent reasoning state<br/>No semantic understanding]
         
-        D -.->|Context Switch| D1[Process Context<br/>32-64 registers per task]
-        E -.->|Virtual Memory| E1[Page Table Management<br/>4KB page swapping]
-        I -.->|Pipeline Stalls| I1[Instruction Cache Misses<br/>Sequential bottlenecks]
-        J -.->|Cache Hierarchy| J1[L1/L2/L3 Cache Levels<br/>Limited by physical size]
-        K -.->|Memory Bandwidth| K1[DRAM Access Latency<br/>100+ cycle delays]
-        
-        P --> Q[Limited Context Storage<br/>No persistent reasoning state]
+        %% Side annotations for limitations
+        C -.->|Limitation| C1[Context switching<br/>loses state between tasks]
+        D -.->|Limitation| D1[Page swapping<br/>breaks memory continuity]
+        H -.->|Limitation| H1[Pipeline stalls<br/>sequential processing only]
+        I -.->|Limitation| I1[Cache misses<br/>physical size constraints]
+        J -.->|Limitation| J1[Memory bandwidth<br/>hardware bottlenecks]
+        P -.->|Critical Gap| P1[NO SEMANTIC MEMORY<br/>NO CONTEXTUAL REASONING<br/>NO AGENT INTELLIGENCE]
     end
     
     style A fill:#e3f2fd
