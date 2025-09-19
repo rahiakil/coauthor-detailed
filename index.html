@@ -12,6 +12,52 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        /* Simple fix: Make all tabs behave the same way */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Force financial tabs to position at top like business tabs */
+        .main-content {
+            position: relative;
+        }
+        
+        /* When financial tabs are active, hide all other content completely */
+        body:has(#infrastructure.active) .tab-content:not(#infrastructure),
+        body:has(#revenue.active) .tab-content:not(#revenue),
+        body:has(#valuation.active) .tab-content:not(#valuation),
+        body:has(#dcf.active) .tab-content:not(#dcf),
+        body:has(#funding.active) .tab-content:not(#funding) {
+            display: none !important;
+            position: absolute !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
+        }
+        
+        /* Position financial tabs at the very top */
+        #infrastructure.active,
+        #revenue.active,
+        #valuation.active,
+        #dcf.active,
+        #funding.active {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 1100px !important;
+            margin: 0 auto !important;
+            padding: 1rem 0.75rem !important;
+            z-index: 10 !important;
+            background: inherit !important;
+        }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -135,6 +181,7 @@
                     <button class="nav-tab" data-tab="market">Market</button>
                     <button class="nav-tab" data-tab="swot">SWOT</button>
                     <button class="nav-tab" data-tab="tropes">Tropes</button>
+                    <button class="nav-tab" data-tab="finance">Finance</button>
                 </div>
                 
                 <!-- Innovation -->
@@ -148,15 +195,16 @@
                     <button class="nav-tab" data-tab="genetic-algorithm">Genetic Algorithm</button>
                 </div>
                 
-                <!-- Financial Analysis -->
+                <!-- Financials -->
                 <div class="nav-group">
                     <span class="nav-group-label">Financials</span>
-                    <button class="nav-tab" data-tab="infrastructure">Infrastructure</button>
-                    <button class="nav-tab" data-tab="revenue">Revenue</button>
-                    <button class="nav-tab" data-tab="valuation">Valuation</button>
-                    <button class="nav-tab" data-tab="dcf">DCF</button>
-                    <button class="nav-tab" data-tab="funding">Funding</button>
+                    <button class="nav-tab" data-tab="f2-infrastructure">Infrastructure</button>
+                    <button class="nav-tab" data-tab="f2-revenue">Revenue</button>
+                    <button class="nav-tab" data-tab="f2-valuation">Valuation</button>
+                    <button class="nav-tab" data-tab="f2-dcf">DCF</button>
+                    <button class="nav-tab" data-tab="f2-funding">Funding</button>
                 </div>
+                
             </div>
         </nav>
 
@@ -961,6 +1009,115 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Finance Tab -->
+            <section class="tab-content" id="finance">
+                <div class="content-grid">
+                    <div class="glass-card full-width">
+                        <h2 class="section-title"><i class="fas fa-dollar-sign"></i> Financial Overview</h2>
+                        <p>Comprehensive financial analysis including revenue projections, infrastructure costs, valuation models, and funding requirements.</p>
+                    </div>
+
+                    <!-- Revenue Summary -->
+                    <div class="glass-card">
+                        <h3 class="card-title">📊 Revenue Summary & Growth Trajectory</h3>
+                        <div class="revenue-overview">
+                            <div class="metric-card">
+                                <span class="metric-label">Year 1 (2025)</span>
+                                <span class="metric-value">$1.8M</span>
+                                <span class="metric-growth">Launch Phase</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-label">Year 3 (2027)</span>
+                                <span class="metric-value">$24.6M</span>
+                                <span class="metric-growth">+276% CAGR</span>
+                            </div>
+                            <div class="metric-card highlight">
+                                <span class="metric-label">Year 5 (2029)</span>
+                                <span class="metric-value">$89.2M</span>
+                                <span class="metric-growth">Target Revenue</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding: 12px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; text-align: center;">
+                            <strong>5-Year Total Revenue: $244.8M</strong> • DCF Valuation: $244M
+                        </div>
+                    </div>
+
+                    <!-- Valuation Summary -->
+                    <div class="glass-card">
+                        <h3 class="card-title">💎 Valuation Analysis</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 18px; border-radius: 10px; border-left: 4px solid #3B82F6;">
+                                <h4 style="color: #3B82F6; margin-bottom: 10px;">DCF Method</h4>
+                                <div style="font-size: 1.8em; font-weight: 700; color: #3B82F6;">$244M</div>
+                                <div style="margin-top: 8px; font-weight: 600; color: #3B82F6;">Conservative estimate</div>
+                            </div>
+                            <div style="background: rgba(168, 85, 247, 0.1); padding: 18px; border-radius: 10px; border-left: 4px solid #A855F7;">
+                                <h4 style="color: #A855F7; margin-bottom: 10px;">Berkus Method</h4>
+                                <div style="font-size: 1.8em; font-weight: 700; color: #A855F7;">$50M</div>
+                                <div style="margin-top: 8px; font-weight: 600; color: #A855F7;">Pre-revenue valuation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Funding Requirements -->
+                    <div class="glass-card">
+                        <h3 class="card-title">💰 Funding Requirements</h3>
+                        <div class="funding-overview">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                                    <div style="font-size: 2em; font-weight: 700; color: #10B981;">$5M</div>
+                                    <div style="color: #10B981; font-weight: 600;">Pre-seed Round</div>
+                                    <div style="font-size: 0.9em; color: var(--text-secondary); margin-top: 5px;">10% Equity</div>
+                                </div>
+                                <div style="text-align: center; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                                    <div style="font-size: 2em; font-weight: 700; color: #3B82F6;">19</div>
+                                    <div style="color: #3B82F6; font-weight: 600;">Months to Profitability</div>
+                                    <div style="font-size: 0.9em; color: var(--text-secondary); margin-top: 5px;">Break-even Point</div>
+                                </div>
+                                <div style="text-align: center; padding: 15px; background: rgba(168, 85, 247, 0.1); border-radius: 8px;">
+                                    <div style="font-size: 2em; font-weight: 700; color: #A855F7;">847%</div>
+                                    <div style="color: #A855F7; font-weight: 600;">5-Year IRR</div>
+                                    <div style="font-size: 0.9em; color: var(--text-secondary); margin-top: 5px;">Industry Leading</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links to Detailed Sections -->
+                    <div class="glass-card full-width">
+                        <h3 class="card-title">🔗 Detailed Financial Analysis</h3>
+                        <p>For comprehensive financial details, please visit the specific sections:</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px; cursor: pointer;" onclick="document.querySelector('[data-tab=infrastructure]').click()">
+                                <div style="font-size: 1.5em; margin-bottom: 5px;">🏗️</div>
+                                <div style="font-weight: 600;">Infrastructure</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Cost Analysis & CapEx</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px; cursor: pointer;" onclick="document.querySelector('[data-tab=revenue]').click()">
+                                <div style="font-size: 1.5em; margin-bottom: 5px;">📈</div>
+                                <div style="font-weight: 600;">Revenue</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Projections by Segment</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px; cursor: pointer;" onclick="document.querySelector('[data-tab=valuation]').click()">
+                                <div style="font-size: 1.5em; margin-bottom: 5px;">💎</div>
+                                <div style="font-weight: 600;">Valuation</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">6 Methodologies</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px; cursor: pointer;" onclick="document.querySelector('[data-tab=dcf]').click()">
+                                <div style="font-size: 1.5em; margin-bottom: 5px;">📊</div>
+                                <div style="font-weight: 600;">DCF</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Detailed Model</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px; cursor: pointer;" onclick="document.querySelector('[data-tab=funding]').click()">
+                                <div style="font-size: 1.5em; margin-bottom: 5px;">💰</div>
+                                <div style="font-weight: 600;">Funding</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Use of Funds</div>
                             </div>
                         </div>
                     </div>
@@ -2693,6 +2850,140 @@ graph TD
                 </div>
             </section>
 
+            <!-- F2 Section Content (copies of financial sections) -->
+            <section class="tab-content" id="f2-infrastructure">
+                <div class="content-grid">
+                    <div class="glass-card full-width">
+                        <h3 class="card-title"><i class="fas fa-server"></i> F2 Infrastructure Cost Analysis & CapEx Model</h3>
+                        <p>Detailed infrastructure requirements, deployment scenarios, and 5-year CapEx analysis covering all user types, context requirements, and reasoning capabilities aligned with DCF projections.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="card-title">💰 Funding Requirements Summary</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #10B981;">$5M</div>
+                                <div style="color: #10B981; font-weight: 600;">Infrastructure Investment</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #3B82F6;">Multi-Cloud</div>
+                                <div style="color: #3B82F6; font-weight: 600;">Deployment Strategy</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-content" id="f2-revenue">
+                <div class="content-grid">
+                    <div class="glass-card full-width">
+                        <h3 class="card-title"><i class="fas fa-dollar-sign"></i> F2 Revenue Projections by Market Segment</h3>
+                        <p>Detailed 5-year revenue projections across four primary market segments, with realistic customer acquisition, pricing, and churn assumptions based on industry benchmarks.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="card-title">📊 Revenue Summary & Growth Trajectory</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #10B981;">$1.8M</div>
+                                <div style="color: #10B981; font-weight: 600;">Year 1 (2025)</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Launch Phase</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #3B82F6;">$24.6M</div>
+                                <div style="color: #3B82F6; font-weight: 600;">Year 3 (2027)</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">+276% CAGR</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(168, 85, 247, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #A855F7;">$89.2M</div>
+                                <div style="color: #A855F7; font-weight: 600;">Year 5 (2029)</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Target Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-content" id="f2-valuation">
+                <div class="content-grid">
+                    <div class="glass-card full-width">
+                        <h3 class="card-title">💎 F2 Comprehensive Valuation Analysis: 6 Methodologies</h3>
+                        <p>Multi-method valuation approach using industry-standard techniques for early-stage AI companies, providing range-based enterprise value estimates with risk-adjusted scenarios.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="card-title">Valuation Methods Comparison</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 18px; border-radius: 10px; border-left: 4px solid #3B82F6;">
+                                <h4 style="color: #3B82F6; margin-bottom: 10px;">DCF Method</h4>
+                                <div style="font-size: 1.8em; font-weight: 700; color: #3B82F6;">$244M</div>
+                                <div style="margin-top: 8px; font-weight: 600; color: #3B82F6;">Conservative estimate</div>
+                            </div>
+                            <div style="background: rgba(168, 85, 247, 0.1); padding: 18px; border-radius: 10px; border-left: 4px solid #A855F7;">
+                                <h4 style="color: #A855F7; margin-bottom: 10px;">Berkus Method</h4>
+                                <div style="font-size: 1.8em; font-weight: 700; color: #A855F7;">$50M</div>
+                                <div style="margin-top: 8px; font-weight: 600; color: #A855F7;">Pre-revenue valuation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-content" id="f2-dcf">
+                <div class="content-grid">
+                    <div class="glass-card full-width">
+                        <h3 class="card-title">📊 F2 DCF Valuation Model: $244M Enterprise Value</h3>
+                        <p>Comprehensive discounted cash flow analysis based on realistic revenue projections, operating leverage, and market-appropriate discount rates for AI SaaS companies.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="card-title">DCF Key Metrics</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #10B981;">$244M</div>
+                                <div style="color: #10B981; font-weight: 600;">Enterprise Value</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">5-Year DCF</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #3B82F6;">12%</div>
+                                <div style="color: #3B82F6; font-weight: 600;">WACC</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Discount Rate</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(168, 85, 247, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #A855F7;">3%</div>
+                                <div style="color: #A855F7; font-weight: 600;">Terminal Growth</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Long-term</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-content" id="f2-funding">
+                <div class="content-grid">
+                    <div class="glass-card full-width">
+                        <h3 class="card-title">💰 F2 Funding Requirements</h3>
+                        <p>Strategic funding requirements and use of funds for scaling operations, product development, and market expansion.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="card-title">Funding Overview</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #10B981;">$5M</div>
+                                <div style="color: #10B981; font-weight: 600;">Pre-seed Round</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">10% Equity</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #3B82F6;">19</div>
+                                <div style="color: #3B82F6; font-weight: 600;">Months to Profitability</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Break-even Point</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(168, 85, 247, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2em; font-weight: 700; color: #A855F7;">847%</div>
+                                <div style="color: #A855F7; font-weight: 600;">5-Year IRR</div>
+                                <div style="font-size: 0.9em; color: var(--text-secondary);">Industry Leading</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="tab-content" id="graphics">
                 <div class="content-grid">
                     <div class="glass-card full-width">
@@ -2831,13 +3122,83 @@ graph TD
                         </div>
                     </div>
 
+                    <!-- Intelligent Memory Planning Architecture -->
+                    <div class="glass-card full-width">
+                        <h3 class="card-title"><i class="fas fa-brain"></i> Intelligent Memory Planning Architecture</h3>
+                        <div class="diagram-image">
+                            <img src="images/diagrams/intelligent_memory_planning_architecture.png" 
+                                 alt="Intelligent Memory Planning Architecture" 
+                                 style="width: 100%; height: auto; max-height: 700px; object-fit: contain; border-radius: 8px;">
+                        </div>
+                        <div class="graphics-explanation">
+                                <h4>5-Step Intelligent Memory Packing Process</h4>
+                                <p>This comprehensive architecture diagram reveals Infinimem's revolutionary 5-step intelligent memory packing process that optimally organizes and compresses information for maximum context utilization. Unlike traditional memory systems that store data sequentially, our intelligent packing dynamically prioritizes, compresses, and arranges memory segments based on relevance, recency, and contextual importance.</p>
+                                
+                                <div style="margin: 20px 0; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 4px solid #10B981;">
+                                    <h5 style="color: #10B981; margin-bottom: 10px;">🎯 Intelligent Packing Algorithm</h5>
+                                    <p style="margin: 0; font-size: 0.9em;">Our memory packing system uses advanced algorithms to compress and arrange context segments like a smart puzzle solver. Instead of simple FIFO (First In, First Out) memory management, we employ semantic understanding, priority scoring, and contextual relationships to pack maximum meaningful information into available context space, achieving up to 5x more effective context utilization than traditional approaches.</p>
+                                </div>
+                                
+                                <div class="memory-process-benefits">
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🔍</span>
+                                        <div class="benefit-content">
+                                            <strong>Step 1 - Current Situation Analysis:</strong> Real-time assessment of context window status and available memory stores to understand current capacity and constraints.
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🧠</span>
+                                        <div class="benefit-content">
+                                            <strong>Step 2 - Memory Planning Agent:</strong> Meta-cognitive AI that analyzes conversation patterns and strategically plans optimal memory allocation and compression strategies.
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">⚙️</span>
+                                        <div class="benefit-content">
+                                            <strong>Step 3 - Detailed Instructions:</strong> Comprehensive memory management instructions covering retrieval, compression, prioritization, context allocation, and execution order.
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">🎯</span>
+                                        <div class="benefit-content">
+                                            <strong>Step 4 - Intelligent Context Packing:</strong> Strategic packing and arrangement of context segments with optimal space utilization. System context, performance data, compressed summaries, and current query are intelligently positioned to maximize information density while maintaining logical flow and accessibility.
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <span class="benefit-icon">✨</span>
+                                        <div class="benefit-content">
+                                            <strong>Step 5 - Contextually Aware Response:</strong> Generation of intelligent responses with perfect context continuity, maintaining conversation history and logical flow.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="planning-benefits">
+                                    <div class="planning-metric">
+                                        <div class="metric-header">Context Continuity</div>
+                                        <div class="metric-description">Maintains conversation history and preserves important context across long sessions</div>
+                                    </div>
+                                    <div class="planning-metric">
+                                        <div class="metric-header">Intelligent Selection</div>
+                                        <div class="metric-description">Relevance-based prioritization and strategic memory allocation for optimal performance</div>
+                                    </div>
+                                    <div class="planning-metric">
+                                        <div class="metric-header">Optimal Performance</div>
+                                        <div class="metric-description">Maximizes context window utility while minimizing retrieval latency and token usage</div>
+                                    </div>
+                                    <div class="planning-metric">
+                                        <div class="metric-header">Problem Prevention</div>
+                                        <div class="metric-description">Eliminates context amnesia, memory loss, and broken conversations through intelligent planning</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </section>
 
             <!-- Financial Tab Content Sections -->
-
-            <section class="tab-content" id="infrastructure">
+            <section class="tab-content" id="infrastructure" style="margin-top: 0; padding-top: 1rem;">
                 <div class="content-grid">
                     <div class="glass-card full-width">
                         <h3 class="card-title"><i class="fas fa-server"></i> Comprehensive Infrastructure Cost Analysis & CapEx Model</h3>
@@ -3385,7 +3746,7 @@ graph TD
                 </div>
             </section>
 
-            <section class="tab-content" id="revenue">
+            <section class="tab-content" id="revenue" style="margin-top: 0; padding-top: 1rem;">
                 <div class="content-grid">
                     <div class="glass-card full-width">
                         <h3 class="card-title"><i class="fas fa-dollar-sign"></i> Comprehensive Revenue Projections by Market Segment</h3>
@@ -3557,7 +3918,7 @@ graph TD
                 </div>
             </section>
 
-            <section class="tab-content" id="valuation">
+            <section class="tab-content" id="valuation" style="margin-top: 0; padding-top: 1rem;">
                 <div class="content-grid">
                     <div class="glass-card full-width">
                         <h3 class="card-title">💎 Comprehensive Valuation Analysis: 6 Methodologies</h3>
@@ -3737,7 +4098,7 @@ graph TD
                 </div>
             </section>
 
-            <section class="tab-content" id="dcf">
+            <section class="tab-content" id="dcf" style="margin-top: 0; padding-top: 1rem;">
                 <div class="content-grid">
                     <div class="glass-card full-width">
                         <h3 class="card-title">📊 DCF Valuation Model: $244M Enterprise Value</h3>
@@ -3980,7 +4341,7 @@ graph TD
                 </div>
             </section>
 
-            <section class="tab-content" id="funding">
+            <section class="tab-content" id="funding" style="margin-top: 0; padding-top: 1rem;">
                 <div class="content-grid">
                     <div class="glass-card">
                         <h3 class="card-title">💰 Funding Requirements</h3>
