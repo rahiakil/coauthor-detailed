@@ -1388,10 +1388,10 @@
                             <div class="competitive-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 25px;">
                                 
                                 <!-- OpenAI ChatGPT/GPTs -->
-                                <div class="competitor-card" style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 18px; border-radius: 10px;">
+                                <div class="competitor-card" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 18px; border-radius: 10px;">
                                     <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                                        <h4 style="color: #10B981; margin: 0;">OpenAI ChatGPT/GPTs</h4>
-                                        <span style="margin-left: auto; background: #10B981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8em;">Major Threat</span>
+                                        <h4 style="color: #F59E0B; margin: 0;">OpenAI ChatGPT/GPTs</h4>
+                                        <span style="margin-left: auto; background: #F59E0B; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8em;">Moderate Threat</span>
                                     </div>
                                     <div style="font-size: 0.9em; line-height: 1.4;">
                                         <div><strong>Market Cap:</strong> $157B+ (Microsoft investment)</div>
@@ -1404,10 +1404,10 @@
                                 </div>
                                 
                                 <!-- Anthropic Claude -->
-                                <div class="competitor-card" style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 18px; border-radius: 10px;">
+                                <div class="competitor-card" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 18px; border-radius: 10px;">
                                     <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                                        <h4 style="color: #3B82F6; margin: 0;">Anthropic Claude</h4>
-                                        <span style="margin-left: auto; background: #3B82F6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8em;">High Threat</span>
+                                        <h4 style="color: #F59E0B; margin: 0;">Anthropic Claude</h4>
+                                        <span style="margin-left: auto; background: #F59E0B; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8em;">Moderate Threat</span>
                                     </div>
                                     <div style="font-size: 0.9em; line-height: 1.4;">
                                         <div><strong>Valuation:</strong> $18.4B (2024)</div>
@@ -1659,85 +1659,10 @@
         <button class="zoom-btn" onclick="zoomDiagram(this, 0.8)">🔍-</button>
         <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
     </div>
-    <div class="mermaid diagram-zoomable">
-graph TD
-    subgraph "Traditional Computer System"
-        A[User Applications] --> B[System Calls]
-        B --> C[Operating System Kernel]
-        C --> D[Process Scheduler]
-        D --> E[Memory Manager]
-        E --> F[File System Manager]
-        F --> G[Device Driver Layer]
-        G --> H[Hardware Abstraction Layer]
-        H --> I[CPU Instruction Pipeline]
-        I --> J[Cache Controller]
-        J --> K[Memory Controller]
-        K --> L[Physical RAM Banks]
-        L --> M[Storage I/O Controller]
-        M --> N[Disk/SSD Hardware]
-        N --> O[Network Interface Controller]
-        O --> P[Hardware Registers]
-        
-        D -.->|Context Switch| D1[Process Context<br/>32-64 registers per task]
-        E -.->|Virtual Memory| E1[Page Table Management<br/>4KB page swapping]
-        I -.->|Pipeline Stalls| I1[Instruction Cache Misses<br/>Sequential bottlenecks]
-        J -.->|Cache Hierarchy| J1[L1/L2/L3 Cache Levels<br/>Limited by physical size]
-        K -.->|Memory Bandwidth| K1[DRAM Access Latency<br/>100+ cycle delays]
-        
-        P --> Q[Limited Context Storage<br/>No persistent reasoning state]
-    end
-    
-    style A fill:#e3f2fd
-    style B fill:#f3e5f5
-    style C fill:#fff8e1
-    style D fill:#ffebee
-    style E fill:#e8f5e8
-    style F fill:#fce4ec
-    style G fill:#f1f8e9
-    style H fill:#fff3e0
-    style I fill:#ff9999
-    style J fill:#ffcc99
-    style K fill:#c8e6c9
-    style L fill:#b39ddb
-    style M fill:#ffcdd2
-    style N fill:#dcedc8
-    style O fill:#f8bbd9
-    style P fill:#81c784
-    style Q fill:#ffab91
-    style D1 fill:#ffcf9e
-    style E1 fill:#ffcf9e
-    style I1 fill:#ffcf9e
-    style J1 fill:#ffcf9e
-    style K1 fill:#ffcf9e
-        
-        C -.->|Learns & Reasons| C1[Previous Context Analysis<br/>Pattern recognition from history]
-        E -.->|Smart Retrieval| E1[Relevance Scoring<br/>Contextual similarity matching]
-        F -.->|Knowledge Base| F1[Persistent Memory<br/>Cross-session learning]
-        G -.->|Priority Queue| G1[Distance-based Importance<br/>Critical context stays closest]
-        H -.->|Cost Optimization| H1[Token Economics<br/>Cost per token ↓ 214x]
-        I -.->|Context Expansion| I1[Larger Windows<br/>10M → 50M+ tokens possible]
-        
-        K --> L[Enhanced Output Quality<br/>Rich contextual understanding]
-    end
-    
-    style A fill:#e3f2fd
-    style B fill:#81c784
-    style C fill:#4caf50
-    style D fill:#2196f3
-    style E fill:#9c27b0
-    style F fill:#ff9800
-    style G fill:#f44336
-    style H fill:#795548
-    style I fill:#607d8b
-    style J fill:#3f51b5
-    style K fill:#009688
-    style L fill:#8bc34a
-    style C1 fill:#c8e6c9
-    style E1 fill:#e1bee7
-    style F1 fill:#ffe0b2
-    style G1 fill:#ffcdd2
-    style H1 fill:#d7ccc8
-    style I1 fill:#cfd8dc
+    <div class="diagram-image">
+        <img src="images/diagrams/cost-advantages.png" 
+             alt="Cost Advantages and Context Expansion" 
+             style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
     </div>
                     </div>
                     
@@ -1865,8 +1790,8 @@ graph TD
         <button class="zoom-btn" onclick="resetZoom(this)">↻</button>
     </div>
     <div class="diagram-image">
-        <img src="images/diagrams/cost-advantages.png" 
-             alt="Cost Advantages and Context Expansion" 
+        <img src="images/diagrams/traditional.png" 
+             alt="Traditional Computer Architecture vs Context Window" 
              style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
     </div>
                     </div>
@@ -2778,12 +2703,10 @@ graph TD
                     <!-- AI Agent Architecture -->
                     <div class="glass-card full-width">
                         <h3 class="card-title"><i class="fas fa-robot"></i> AI Agent Architecture: Dynamic Computing with Memory Challenges</h3>
-                        <div class="graphics-container">
-                            <div class="svg-display" style="grid-column: 1 / -1;">
-                                <img src="images/diagrams/ai_agent_architecture.svg" 
-                                     alt="AI Agent Architecture" 
-                                     style="width: 100%; height: auto; max-height: 600px; object-fit: contain;">
-                            </div>
+                        <div class="diagram-image">
+                            <img src="images/diagrams/ai_agent_architecture.png" 
+                                 alt="AI Agent Architecture" 
+                                 style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
                         </div>
                         <div class="graphics-explanation">
                             <h4>AI Agents: The New Computing Paradigm</h4>
@@ -2821,13 +2744,12 @@ graph TD
                     <!-- LLM Memory Packing Comparison -->
                     <div class="glass-card full-width">
                         <h3 class="card-title"><i class="fas fa-brain"></i> Memory Packing: Physical vs LLM Intelligence</h3>
-                        <div class="graphics-container">
-                            <div class="svg-display">
-                                <img src="images/diagrams/llm_memory_packing_comparison.svg" 
-                                     alt="LLM Memory Packing Comparison" 
-                                     style="width: 100%; height: auto; max-height: 500px; object-fit: contain;">
-                            </div>
-                            <div class="graphics-explanation">
+                        <div class="diagram-image">
+                            <img src="images/diagrams/llm_memory_packing_comparison.png" 
+                                 alt="LLM Memory Packing Comparison" 
+                                 style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
+                        </div>
+                        <div class="graphics-explanation">
                                 <h4>Why LLM Memory Intelligence Matters for Agents</h4>
                                 <p>Traditional physical memory systems store data linearly and retrieve it sequentially. LLM memory intelligence revolutionizes this approach by understanding semantic relationships, context relevance, and information hierarchies.</p>
                                 
@@ -2858,13 +2780,12 @@ graph TD
                     <!-- Context Window Limitations -->
                     <div class="glass-card full-width">
                         <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> The Context Window: LLM's Limited Universe</h3>
-                        <div class="graphics-container">
-                            <div class="svg-display">
-                                <img src="images/diagrams/llm_context_window_limitation.svg" 
-                                     alt="LLM Context Window Limitations" 
-                                     style="width: 100%; height: auto; max-height: 500px; object-fit: contain;">
-                            </div>
-                            <div class="graphics-explanation">
+                        <div class="diagram-image">
+                            <img src="images/diagrams/llm_context_window_limitation.png" 
+                                 alt="LLM Context Window Limitations" 
+                                 style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 8px;">
+                        </div>
+                        <div class="graphics-explanation">
                                 <h4>Agentic Model Limitations When LLMs Need to Be Called</h4>
                                 <p>Current AI agents face critical bottlenecks when their context windows reach capacity. This diagram illustrates how traditional LLMs create decision-making constraints that break agentic workflows.</p>
                                 
@@ -2910,33 +2831,7 @@ graph TD
                         </div>
                     </div>
 
-                    <!-- Technical Implementation -->
-                    <div class="glass-card">
-                        <h3 class="card-title"><i class="fas fa-cogs"></i> Technical Implementation: Memory Architecture</h3>
-                        <div class="tech-implementation">
-                            <div class="implementation-tier active">
-                                <div class="tier-header">
-                                    <span class="tier-icon">🚀</span>
-                                    <h4>Active Memory (200K tokens)</h4>
-                                </div>
-                                <p>Immediate working context for real-time agent decisions and reasoning</p>
-                            </div>
-                            <div class="implementation-tier semantic">
-                                <div class="tier-header">
-                                    <span class="tier-icon">🧠</span>
-                                    <h4>Semantic Memory (2M tokens)</h4>
-                                </div>
-                                <p>Contextually relevant information with semantic relationships and priority ranking</p>
-                            </div>
-                            <div class="implementation-tier archive">
-                                <div class="tier-header">
-                                    <span class="tier-icon">📚</span>
-                                    <h4>Archive Memory (10M+ tokens)</h4>
-                                </div>
-                                <p>Complete historical context with intelligent retrieval and relationship mapping</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </section>
 
